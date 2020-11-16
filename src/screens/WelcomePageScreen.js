@@ -19,6 +19,12 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import DateScreen from "../screens/DateScreen";
+import {
+  BorderlessButton,
+  RawButton,
+  RectButton,
+} from "react-native-gesture-handler";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default class WelcomePageScreen extends Component {
   constructor(props) {
@@ -76,37 +82,63 @@ export default class WelcomePageScreen extends Component {
 
           <View>
             <TouchableOpacity style={styles.PickerText}>
-              {/* <Button */}
-              {/* style={{
+              {/* <button
+                type="button"
+                style={{
                   // margin: 2,
                   // padding: 3,
                   // flexDirection: "row",
                   borderWidth: 1,
                   marginTop: 20,
                   marginHorizontal: 5,
+                  backgroundColor: "white",
                 }}
               > */}
-              <Text placeholder="Currency" style={[styles.currencyText]}>
-                Currency
-              </Text>
-              <Picker
-                selectedLabel={this.state.selectedLabel}
-                onValueChange={this.show.bind()}
-                mode="dialog"
-                style={{ borderRadius: 3, border: 0, fontSize: 12 }}
+              <View
+                style={{
+                  marginTop: 20,
+                  marginHorizontal: 1,
+                  // borderWidth: 1,
+                  // fontWeight: "300",
+                  width: 62,
+                  shadowRadius: 4,
+                }}
               >
-                <Picker.Item label="GHS" value="GHS" />
-                <Picker.Item label="NGN" value="NGN" />
-                <Picker.Item label="USD" value="USD" />
-                <Picker.Item label="XOF" value="XOF" />
-              </Picker>
-              {/* </Button> */}
+                <Picker.Item
+                  label="Currency"
+                  value="default"
+                  style={[styles.currencyText]}
+                />
+                {/* Currency */}
+
+                <Picker
+                  selectedLabel={this.state.selectedLabel}
+                  onValueChange={this.show.bind()}
+                  mode="dropdown"
+                  style={{
+                    borderRadius: 1,
+                    border: 0,
+                    fontSize: 13,
+                    letterSpacing: 2,
+                  }}
+                >
+                  <Picker.Item label="GHS" value="GHS" />
+                  <Picker.Item label="NGN" value="NGN" />
+                  <Picker.Item label="USD" value="USD" />
+                  <Picker.Item label="XOF" value="XOF" />
+                </Picker>
+              </View>
+              {/* </button> */}
             </TouchableOpacity>
           </View>
 
           {/* <button> */}
           <View style={styles.InfoText}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("DepartureScreen");
+              }}
+            >
               <EvilIcons
                 name="location"
                 size={25}
@@ -165,6 +197,7 @@ export default class WelcomePageScreen extends Component {
                 onePress={() => navigation.navigate("DateScreen")}
               >
                 <Text style={{ marginLeft: 9 }}>Dates</Text>
+
                 <Text style={styles.dateformat}>Select date(s)</Text>
 
                 {/* </button> */}
@@ -173,7 +206,7 @@ export default class WelcomePageScreen extends Component {
           </View>
 
           <View style={styles.all_content}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress>
               {/* <button style={{}}> */}
               <Ionicons
                 name="md-people"
@@ -222,7 +255,7 @@ export default class WelcomePageScreen extends Component {
             <TouchableOpacity>
               <Text style={styles.Booking_Text}> My Booking</Text>
             </TouchableOpacity>
-            <Button
+            <button
               style={{
                 backgroundColor: "orange",
                 border: 2,
@@ -233,7 +266,7 @@ export default class WelcomePageScreen extends Component {
                   Search
                 </Text>
               </TouchableOpacity>
-            </Button>
+            </button>
           </View>
         </View>
       </ScrollView>
@@ -322,10 +355,12 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   currencyText: {
-    fontWeight: "bold",
+    fontWeight: "100",
     fontSize: 10,
     paddingTop: 15,
     marginTop: 5,
+    border: "none",
+    letterSpacing: 3,
   },
   passStyle: {
     fontSize: 10,
