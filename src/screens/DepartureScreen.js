@@ -20,23 +20,36 @@ export default class DepartureScreen extends Component{
 
      renderItem = ({item})=>{
        return
-         <View>
-           <Text>{item.text}</Text>
+         <View style={styles.main_Text}>
+           <View style={styles.marginRight}>
+             <View style={styles.textinput,{backgroundColor:item.color}}>(ABJ)</View>
+             <View style={styles.textinput,{backgroundColor:item.color}}>(ABV)</View>
+             <View style={styles.textinput,{backgroundColor:item.color}}>(ACC)</View>
+             <View style={styles.textinput,{backgroundColor:item.color}}>(FNA)</View>
+             <View style={styles.textinput,{backgroundColor:item.color}}>(ROS)</View>
+
+
+
+
+           </View>
+           <Text style={styles.text}>{item.text}</Text>
          </View>
        
      }
   render(){
     return (
-        <View style={styles.container}> 
-        <View style={[styles.departureText,styles.input]}>
+        <View style={styles.flatListText}> 
+      <View style={[styles.departureText,styles.input]}>
         <Text style={styles.subText}>Select departure
 
         <TouchableOpacity>
         <Fontisto name="close-a" size={22} color="orange" style={{marginLeft:90}}/>
         </TouchableOpacity>
         </Text>
-       
-        </View>
+       </View>
+
+      
+          
         <FlatList
         departure= {this.state.departure}
         keyExtractor = {(item) =>item.id.toString()}
@@ -69,6 +82,29 @@ export default class DepartureScreen extends Component{
     subText:{
       justifyContent:'center',
       marginLeft:80
+      
+    },
+    flatListText:{
+         backgroundColor:'white'
+    },
+    main_Text:{
+      borderWidth:1,
+      borderBottomColor:'gray',
+      alignItems:'center'
+    },
+    text:{
+      marginVertical:30,
+      fontSize:20,
+      marginLeft:10
+    },
+    marginRight:{
+      marginRight:5,
+    },
+
+    textinput:{
+      fontSize:14,
+      marginRight:50,
+      color:'gray'
       
     }
   })
