@@ -10,6 +10,8 @@ import {
   CheckBox,
   ScrollView,
   Button,
+  Animated,
+
   // Card,
   // CardItem,
 } from "react-native";
@@ -19,12 +21,20 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import DateScreen from "../screens/DateScreen";
-import {
-  BorderlessButton,
-  RawButton,
-  RectButton,
-} from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { BorderlessButton, RawButton, RectButton } from "react-native";
+import Booking from "./Booking";
+import Popup from "./Popup";
+
+// const popupList = [
+//   {
+//     id: 1,
+//     name: "Confirmation Name",
+//   },
+//   {
+//     id: 2,
+//     name: "Last Name",
+//   },
+// ];
 
 export default class WelcomePageScreen extends Component {
   constructor(props) {
@@ -44,8 +54,27 @@ export default class WelcomePageScreen extends Component {
     alert("one");
   }
 
+  fadeAnimation = () => {
+    Animated.timing(this.state.fadeValue, {
+      toValue: 1,
+      duration: 1200,
+    }).start();
+  };
+
   render() {
+    // const { navigation } = this.props;
+
+    // let popoupRef = React.createRef();
+
+    // const onShowPopup = () => {
+    //   popoupRef = show();
+    // };
+
+    // const onClosePopup = () => {
+    //   popoupRef = close();
+    // };
     const { navigation } = this.props;
+
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
         <Text
@@ -135,9 +164,7 @@ export default class WelcomePageScreen extends Component {
           {/* <button> */}
           <View style={styles.InfoText}>
             <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("DepartureScreen");
-              }}
+              
             >
               <EvilIcons
                 name="location"
@@ -160,12 +187,14 @@ export default class WelcomePageScreen extends Component {
               />
             </TouchableOpacity>
             <View style={styles.TextDepat}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => {
+                navigation.navigate("DepartureScreen");
+              }}>
                 <Text style={styles.destinationText}>
                   Departure & Destination
                 </Text>
 
-                <Text style={[styles.TextContent, styles.TextContent]}>
+                <Text style={[styles.TextContent, styles.TextContent]} >
                   Select departure & destination
                 </Text>
 
@@ -206,7 +235,7 @@ export default class WelcomePageScreen extends Component {
           </View>
 
           <View style={styles.all_content}>
-            <TouchableOpacity onPress>
+            <TouchableOpacity>
               {/* <button style={{}}> */}
               <Ionicons
                 name="md-people"
@@ -223,13 +252,18 @@ export default class WelcomePageScreen extends Component {
             </TouchableOpacity>
 
             <View style={styles.mainText}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("PassengersScreen");
+                }}
+              >
                 <Text style={styles.passengerText}> Select passengers</Text>
                 <Text style={[styles.passengerText, styles.passStyle]}>
                   1 addult
                 </Text>
               </TouchableOpacity>
             </View>
+            {/* <Passengers /> */}
 
             {/* </button> */}
           </View>
@@ -252,10 +286,15 @@ export default class WelcomePageScreen extends Component {
           </View>
 
           <View style={styles.textContent}>
-            <TouchableOpacity>
-              <Text style={styles.Booking_Text}> My Booking</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ show: true });
+              }}
+            >
+              {/* <Text style={styles.Booking_Text}>My Booking</Text> */}
+              <Booking />
             </TouchableOpacity>
-            <button
+            {/* <button
               style={{
                 backgroundColor: "orange",
                 border: 2,
@@ -266,7 +305,7 @@ export default class WelcomePageScreen extends Component {
                   Search
                 </Text>
               </TouchableOpacity>
-            </button>
+            </button> */}
           </View>
         </View>
       </ScrollView>
