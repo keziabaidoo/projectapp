@@ -21,20 +21,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import DateScreen from "../screens/DateScreen";
-import { BorderlessButton, RawButton, RectButton } from "react-native";
 import Booking from "./Booking";
 import Popup from "./Popup";
 
-// const popupList = [
-//   {
-//     id: 1,
-//     name: "Confirmation Name",
-//   },
-//   {
-//     id: 2,
-//     name: "Last Name",
-//   },
-// ];
 
 export default class WelcomePageScreen extends Component {
   constructor(props) {
@@ -59,20 +48,14 @@ export default class WelcomePageScreen extends Component {
       toValue: 1,
       duration: 1200,
     }).start();
+
+
   };
 
+
   render() {
-    // const { navigation } = this.props;
-
-    // let popoupRef = React.createRef();
-
-    // const onShowPopup = () => {
-    //   popoupRef = show();
-    // };
-
-    // const onClosePopup = () => {
-    //   popoupRef = close();
-    // };
+  
+    
     const { navigation } = this.props;
 
     return (
@@ -99,13 +82,12 @@ export default class WelcomePageScreen extends Component {
         <View style={styles.container}>
           <View
             style={styles.TextOpacity}
-            // style={[styles.tripText, styles.TextOne]}
           >
             <TouchableOpacity>
               <Text style={styles.tripText}>Roundtrip</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Text style={[styles.TextOne, styles.tripText]}>One Way</Text>
+              <Text style={styles.TextOne}>One Way</Text>
             </TouchableOpacity>
           </View>
 
@@ -300,13 +282,19 @@ export default class WelcomePageScreen extends Component {
                 border: 2,
               }}
             >
-              <TouchableOpacity style={{ padding: 5 }}>
-                <Text style={[styles.Booking_Text, styles.searchText]}>
+             </button> */}
+             
+          </View>
+          {/* <View style={styles.mainText}> */}
+          <TouchableOpacity onPress={()=>{
+             navigation.navigate('ResultPageScreen')
+          }}>
+                <Text >
                   Search
                 </Text>
               </TouchableOpacity>
-            </button> */}
-          </View>
+              {/* </View> */}
+           
         </View>
       </ScrollView>
     );
@@ -323,6 +311,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
+
+  mainText:{
+    shadowRadius:10,
+    height:30
+
+  },
+  
 
   all_content: {
     borderWidth: 1,
@@ -380,12 +375,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // marginVertical: 5,
     // paddingHorizontal: 10,
-    padding: 5,
+    // padding: 5,
     justifyContent: "space-between",
     // borderRadius: 5,
-    borderWidth: 1,
+  borderWidth:1,
     marginRight: 10,
     height: 40,
+    borderColor:'gray',
+    fontFamily:'bold'
   },
   TextContent: {
     fontSize: 11,
@@ -412,16 +409,18 @@ const styles = StyleSheet.create({
     left: 30,
   },
   tripText: {
-    justifyContent: "center",
-    alignSelf: "center",
-    // paddingHorizontal: 15,
-    // flex: 8
-    // borderLeftWidth: 1,
-    borderRadius: 1,
+    marginLeft:20
+   
+  
+
   },
 
   TextOne: {
-    borderRadius: 1,
+    borderWidth:1,
+    width:'12em',
+    height:40,
+    paddingTop:10,
+    borderColor:'gray'
   },
 
   PickerText: {
@@ -476,6 +475,8 @@ const styles = StyleSheet.create({
     top: 300,
     borderRadius: 3,
     paddingTop: 20,
+    fontFamily:'Garamond',
+    fontSize:12
   },
 
   passText: {

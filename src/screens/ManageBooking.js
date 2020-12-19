@@ -58,7 +58,7 @@ export default class ManagingBooking extends Component {
             }}
           </Text>
         </View>
-        <Text title="Search" style={styles.searchText}></Text>
+        
         <Modal
           animationType="slide"
           transparent={true}
@@ -149,6 +149,9 @@ const styles = StyleSheet.create({
     marginLeft: 200,
     justifyContent: "space-around",
     backgroundColor: "#72e9ed",
+    fontSize:20,
+    fontStyle:'italic'
+    
   },
   confirmText: {
     height: 50,

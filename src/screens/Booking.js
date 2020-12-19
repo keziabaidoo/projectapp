@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-import { Text, View, TextInput } from "react-native";
+import { Text, View, TextInput, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ManageBooking from "../../other";
 import Popup from "./Popup";
 
-export default class Booking extends Component {
+export default class Booking extends Component  {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,15 +13,20 @@ export default class Booking extends Component {
     };
   }
 
+
   close = () => {
     this.setState({
       isShow: false,
     });
   };
+
+ 
   render() {
+
     const { isShow } = this.state;
     return (
       <View>
+        <View style={styles.main_content}>
         <TouchableOpacity
           style={{
             // backgroundColor: "#72e9ed",
@@ -37,8 +42,16 @@ export default class Booking extends Component {
             });
           }}
         >
-          <Text>My Booking</Text>
+          <Text style={{fontSize:15,fontStyle:'italic'}}>My Booking</Text>
         </TouchableOpacity>
+        {/* <View style={styles.mainText}>
+        <TouchableOpacity onPress={()=>{
+        this.props.navigation.navigate('ResultPageScreen')
+        }}>
+          <Text style={styles.searchText}>Search</Text>
+        </TouchableOpacity>
+        </View> */}
+        </View>
         <Popup
           My
           Booking={isShow}
@@ -46,7 +59,40 @@ export default class Booking extends Component {
           animationType={"slide"}
           closePopup={this.close}
         />
+       
       </View>
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+  main_content:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    marginHorizontal:5
+
+  },
+
+  searchText:{
+    fontSize:15,
+    fontStyle:'italic',
+    color:'white',
+    marginLeft:20
+
+
+  },
+  mainText:{
+    shadowRadius:10,
+    height:35,
+    width:95,
+    // borderWidth:1,
+    backgroundColor:'orange',
+    justifyContent:'center',
+    shadowOpacity:5,
+    marginRight:10
+    
+
+
+  }
+})

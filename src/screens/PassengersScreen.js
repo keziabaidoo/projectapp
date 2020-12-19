@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { Entypo } from "@expo/vector-icons";
-import Counters from "react-native-counters";
+// import Counters from "react-native-counters";
 import {Formik} from 'formik'
 import { Value } from "react-native-reanimated";
 

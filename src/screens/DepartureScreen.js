@@ -1,110 +1,140 @@
-import React from 'react'
-import { Component } from 'react'
-import {View,FlatList,Text,StyleSheet, TouchableOpacity,} from 'react-native'
+import React, { Component } from 'react';
+import {  FlatList,StyleSheet, Text, View,Alert,TouchableOpacity  } from 'react-native';
 import { Fontisto } from "@expo/vector-icons";
-import Departure from '../Departure'
-
-
-// import DepartureList from  '../DepartureList'
-
-
+import { color } from 'react-native-reanimated';
 
 export default class DepartureScreen extends Component{
-     constructor(props){
-       super(props);
-       this.initDeparture = Departure
-       this.state = {
-         departure:this.initDeparture
-       };
-     }
+ 
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      refresh: false,
+    };
+  }
 
-     renderItem = ({item})=>{
-       return
-         <View style={styles.main_Text}>
-           <View style={styles.marginRight}>
-             <View style={styles.textinput,{backgroundColor:item.color}}>(ABJ)</View>
-             <View style={styles.textinput,{backgroundColor:item.color}}>(ABV)</View>
-             <View style={styles.textinput,{backgroundColor:item.color}}>(ACC)</View>
-             <View style={styles.textinput,{backgroundColor:item.color}}>(FNA)</View>
-             <View style={styles.textinput,{backgroundColor:item.color}}>(ROS)</View>
+renderHeader= () => {
+var header= (
+<View style ={[styles.header_footer_style,styles.input]}>
+<Text style ={styles.textStyle}>Select departure</Text>
+<TouchableOpacity onPress={()=>{
+ this.props.navigation.navigate('WelcomePageScreen')
+}}>
+  <Fontisto name="close-a" size={18} color="orange" style={{marginLeft:120}}/>
+</TouchableOpacity>
 
 
+</View>
+);
+return header;
+};
+renderSeparator = () => {
+return (
+<View
+style={{
+width: "100%",
+// backgroundColor: "#000",
+borderBottomColor:'gray',
+borderBottomWidth:1
+}}
+/>
+);
+};
 
+onItemSelect = item => {
+  console.log('item', item);
+};
+ 
+render() {
+ const data=[
+    {id: 1,key: "Abidjan,Felix,Houphouet Boigny,ABJ",title: '(ABJ)'},
+    {id: 2,key: "Abuja,Nnamdi,Azikiwe,Intl Airport,ABV", title: '(ABV)'},
+    {id: 3,key: "Accra,Kotoka Intl Airport,ACC",title: '(ACC)'},
+    {id: 4,key: "Freetown,Lungi Intl Airport,FNA",title: '(FNA)'},
+    {id:5,key: "Kumasi,Airport,KMS",title:'KMS'},
+    {id:6,key: "Lagos,Mohammed Murtala Intl Airport,LOS", title: '(LOS)'},
+    {id:7,key: "Monrovia,Roberts Intl Airport,ROB", title: '(ROB)'},
+    {id:8,key: "Takoradi Airport,TKD", title: '(TKD)'},
+    {id:9,key: "Tamale Airport,TML", title:'(TML)' } ,
+    {id:10,key:"Wa Airport,WZA", title: '(WZA)' }
+    ] 
+    // const {navigate} = this.props.Navigation
 
-           </View>
-           <Text style={styles.text}>{item.text}</Text>
-         </View>
-       
-     }
-  render(){
-    return (
-        <View style={styles.flatListText}> 
-      <View style={[styles.departureText,styles.input]}>
-        <Text style={styles.subText}>Select departure
+return (
+<View style={styles.container}>
+<FlatList
+ data={data}
+ extraData={this.data}
+ keyExtractor={item => item.id}
+ ItemSeparatorComponent={this.renderSeparator}
+ ListHeaderComponent={this.renderHeader}
+ renderItem={({item}) => {
+  return (
+    <TouchableOpacity
+      onPress={() => {
+        this.onItemSelect(item);
+      }}>
+     <View style={styles.item}>
+    <Text style={styles.textKey}>{item.key}</Text>
+    <Text style={styles.titleText}>{item.title}</Text>
+     </View>
 
-        <TouchableOpacity>
-        <Fontisto name="close-a" size={22} color="orange" style={{marginLeft:90}}/>
-        </TouchableOpacity>
-        </Text>
-       </View>
-
-      
-          
-        <FlatList
-        departure= {this.state.departure}
-        keyExtractor = {(item) =>item.id.toString()}
-        renderItem = {this.renderItem}
-        />
-
-    
-        </View>
-    )
+</TouchableOpacity>
+  );
+    }}
+/>
+</View>
+);
 }
 }
+const styles = StyleSheet.create({
+container: {
+  marginHorizontal:5
+},
+item: {
+padding: 15,
+fontSize: 14,
+height: 44,
+fontStyle:'Roboto',
+flexDirection:'row',
+justifyContent:'space-between'
+},
 
-  const styles = StyleSheet.create({
-    container:{
-      // marginHorizontal:5
-    },
-    departureText:{
-     margin:20,
-    //  flexDirection:'row'
-    // justifyContent:'space-between',
-    marginHorizontal:5
-    },
-    input: {
-      borderBottomWidth: 1,
-      fontSize: 20,
-      borderBottomColor: "gray",
-      height: 50,
-      marginTop: 20,
-    },
-    subText:{
-      justifyContent:'center',
-      marginLeft:80
-      
-    },
-    flatListText:{
-         backgroundColor:'white'
-    },
-    main_Text:{
-      borderWidth:1,
-      borderBottomColor:'gray',
-      alignItems:'center'
-    },
-    text:{
-      marginVertical:30,
-      fontSize:20,
-      marginLeft:10
-    },
-    marginRight:{
-      marginRight:5,
-    },
+header_footer_style:{
+  flexDirection:'row',
+  justifyContent:'center',
+  margin:10,
+  alignContent:'center',
+  paddingTop: 20,
+  fontSize:18,  
+},
 
-    textinput:{
-      fontSize:14,
-      marginRight:50,
-      color:'gray'
-      
-    }
-  })
+textStyle:{
+   marginLeft:65
+},
+input: {
+  borderBottomWidth: 1,
+  fontSize: 20,
+  borderBottomColor: "gray",
+  height: 50,
+  marginTop: 20,
+  width:'100%',
+  marginHorizontal:5
+},
+
+textKey:{
+  fontSize:12
+},
+titleText:{
+  fontSize:12,
+  color:'gray'
+}
+
+
+
+
+})
+
+
+
+
