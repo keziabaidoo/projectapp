@@ -21,20 +21,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import DateScreen from "../screens/DateScreen";
-import { BorderlessButton, RawButton, RectButton } from "react-native";
 import Booking from "./Booking";
 import Popup from "./Popup";
 
-// const popupList = [
-//   {
-//     id: 1,
-//     name: "Confirmation Name",
-//   },
-//   {
-//     id: 2,
-//     name: "Last Name",
-//   },
-// ];
 
 export default class WelcomePageScreen extends Component {
   constructor(props) {
@@ -59,20 +48,14 @@ export default class WelcomePageScreen extends Component {
       toValue: 1,
       duration: 1200,
     }).start();
+
+
   };
 
+
   render() {
-    // const { navigation } = this.props;
-
-    // let popoupRef = React.createRef();
-
-    // const onShowPopup = () => {
-    //   popoupRef = show();
-    // };
-
-    // const onClosePopup = () => {
-    //   popoupRef = close();
-    // };
+  
+    
     const { navigation } = this.props;
 
     return (
@@ -82,14 +65,14 @@ export default class WelcomePageScreen extends Component {
             fontWeight: "bold",
             fontSize: 20,
             marginTop: 0.1,
-            // marginHorizontal: 20,
+            marginHorizontal: 20,
             backgroundColor: "#72e9ed",
 
             textAlign: "center",
             marginVertical: 30,
             padding: 30,
             // position: "relative",
-            border: "none",
+            // border: "none",
             alignSelf: "stretch",
             color: "white",
           }}
@@ -99,13 +82,12 @@ export default class WelcomePageScreen extends Component {
         <View style={styles.container}>
           <View
             style={styles.TextOpacity}
-            // style={[styles.tripText, styles.TextOne]}
           >
             <TouchableOpacity>
               <Text style={styles.tripText}>Roundtrip</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Text style={[styles.TextOne, styles.tripText]}>One Way</Text>
+              <Text style={styles.TextOne}>One Way</Text>
             </TouchableOpacity>
           </View>
 
@@ -127,40 +109,29 @@ export default class WelcomePageScreen extends Component {
                 style={{
                   marginTop: 20,
                   marginHorizontal: 1,
-                  borderWidth: 1,
+                  // borderWidth: 1,
                   // fontWeight: "300",
                   width: 62,
                   shadowRadius: 4,
-                  shadowColor: "#000",
-                // shadowOffset: { width: 1, height: 1 },
-                shadowOpacity: 0.8,
-                shadowRadius: 1,
-                borderRadius:3,
-                borderColor:'lightgray',
-                fontSize:13,
-                fontFamily:'ubuntu',
-                fontWeight:'300'
-                
                 }}
               >
                 <Picker.Item
                   label="Currency"
-                  // value="default"
-                  style={[styles.currencyText]}
+                  value="default"
+                  style={styles.defaultText}
                 />
                 {/* Currency */}
 
                 <Picker
                   selectedLabel={this.state.selectedLabel}
                   onValueChange={this.show.bind()}
-                  mode="dialog"
+                  mode="dropdown"
                   style={{
-                    // borderRadius: 0,
-                    borderRadius: 0,
+                    borderRadius: 1,
+                    border: 0,
                     fontSize: 13,
                     letterSpacing: 2,
-                    fontWeight: "600",
-                    fontFamily:'roboto'
+                    fontWeight:'bold'
                   }}
                 >
                   <Picker.Item label="GHS" value="GHS" />
@@ -175,7 +146,9 @@ export default class WelcomePageScreen extends Component {
 
           {/* <button> */}
           <View style={styles.InfoText}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              
+            >
               <EvilIcons
                 name="location"
                 size={25}
@@ -197,16 +170,14 @@ export default class WelcomePageScreen extends Component {
               />
             </TouchableOpacity>
             <View style={styles.TextDepat}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("DepartureScreen");
-                }}
-              >
+              <TouchableOpacity onPress={() => {
+                navigation.navigate("DepartureScreen");
+              }}>
                 <Text style={styles.destinationText}>
                   Departure & Destination
                 </Text>
 
-                <Text style={[styles.TextContent, styles.TextContent]}>
+                <Text style={[styles.TextContent, styles.TextContent]} >
                   Select departure & destination
                 </Text>
 
@@ -237,7 +208,7 @@ export default class WelcomePageScreen extends Component {
               <TouchableOpacity
                 onePress={() => navigation.navigate("DateScreen")}
               >
-                <Text style={{ marginLeft: 9 }}>Dates</Text>
+                <Text style={{ marginLeft: 9,fontFamily:'Ubuntu' }}>Dates</Text>
 
                 <Text style={styles.dateformat}>Select date(s)</Text>
 
@@ -271,7 +242,7 @@ export default class WelcomePageScreen extends Component {
               >
                 <Text style={styles.passengerText}> Select passengers</Text>
                 <Text style={[styles.passengerText, styles.passStyle]}>
-                  1 addult
+                  1 adult
                 </Text>
               </TouchableOpacity>
             </View>
@@ -312,13 +283,19 @@ export default class WelcomePageScreen extends Component {
                 border: 2,
               }}
             >
-              <TouchableOpacity style={{ padding: 5 }}>
-                <Text style={[styles.Booking_Text, styles.searchText]}>
+             </button> */}
+             
+          </View>
+          {/* <View style={styles.mainText}> */}
+          <TouchableOpacity onPress={()=>{
+             navigation.navigate('ResultPageScreen')
+          }}>
+                <Text >
                   Search
                 </Text>
               </TouchableOpacity>
-            </button> */}
-          </View>
+              {/* </View> */}
+           
         </View>
       </ScrollView>
     );
@@ -335,6 +312,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
+
+  mainText:{
+    shadowRadius:10,
+    height:30
+
+  },
+  
 
   all_content: {
     borderWidth: 1,
@@ -386,61 +370,35 @@ const styles = StyleSheet.create({
   //   marginRight: 5,
   // },
 
-  TextOpacity: {
-    textAlign: "center",
-    flexDirection: "row",
-    alignItems: "center",
-    // marginVertical: 5,
-    // paddingHorizontal: 10,
-    // padding: 5,
-    justifyContent: "space-between",
-    // borderRadius: 5,
-    borderWidth: 1,
-    marginRight: 10,
-    height: 40,
-    borderColor: "gray",
-    fontFamily: "bold",
-  },
+  
   TextContent: {
-    fontSize: 11,
+    fontSize:16,
     paddingEnd: 20,
-    justifyContent: "center",
+    justifyContent: "center", 
+    fontFamily:'Arial Rounded MT Bold',
     paddingTop: 5,
+    fontWeight:'normal'
   },
-  currencyText: {
+  defaultText: {
     // fontSize: 10,
-    paddingTop: 5,
+    paddingTop: 15,
     marginTop: 5,
-    // borderRadius: 'none',
-    fontFamily: "ubuntu",
-    fontSize:15
-    
+    border: "none",
+    fontFamily:'Courier'
   },
-  passStyle: {
-    fontSize: 10,
-    top: 70,
-  },
-
-  passengerText: {
-    // paddingTop: 0.5,
-    // marginBottom: 60,
-    left: 30,
-  },
+  
+ 
   tripText: {
-    marginLeft: 20,
-    fontFamily: "Ubuntu",
-    fontWeight: "300",
+    marginLeft:20,
+    fontFamily:'Ubuntu',
+    fontWeight:'300'
+    
+   
+  
+
   },
 
-  TextOne: {
-    borderWidth: 1,
-    width: "12em",
-    height: 40,
-    paddingTop: 10,
-    borderColor: "gray",
-    fontFamily: "Ubuntu",
-    fontWeight: "300",
-  },
+  
 
   PickerText: {
     marginHorizontal: 5,
@@ -456,7 +414,7 @@ const styles = StyleSheet.create({
     // marginBottom: 20,
     // paddingHorizontal: 5,
     // flexDirection: "row",
-    bottom: 80,
+    paddingBottom: 80,
     marginLeft: 30,
     // flexDirection: "row",
   },
@@ -467,14 +425,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "white",
   },
-  textContent: {
-    alignItems: "center",
-    // justifyContent: "space-around",
-    justifyContent: "space-between",
-    marginHorizontal: 5,
-
-    flexDirection: "row",
-  },
+  
 
   FareText: {
     padding: 10,
@@ -484,43 +435,15 @@ const styles = StyleSheet.create({
   text_p: {
     margin: 5,
     flexDirection: "row",
-    // marginTop: 10,
-    bottom: 5,
-  },
-  destinationText: {
-    justifyContent: "center",
-    // justifyContent: "space-between",
-    marginRight: 25,
-    top: 300,
-    borderRadius: 3,
-    paddingTop: 20,
-  },
-
-  passText: {
     marginTop: 10,
-    borderWidth: 1,
-    width: 400,
-    height: 50,
+    paddingBottom: 5,
   },
+  
+
+  
   // Pickerstyle: {
   //   borderRadius: 3,
   // },
-  dateText: {
-    // flexDirection: "row",
-    // marginHorizontal: 10,
-    // margin: 20,
-    // padding: 10,
-    bottom: 70,
-    marginLeft: 25,
-  },
-  dateformat: {
-    fontSize: 10,
-    // padding: 10,
-    // justifyContent: "flex-start",
-    justifyContent: "center",
-    marginLeft: 5,
-    top: 80,
-    // borderRadius: 3,
-    paddingTop: 3,
-  },
+  
+ 
 });

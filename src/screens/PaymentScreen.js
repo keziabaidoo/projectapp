@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
   moneyText: {
     marginHorizontal: 5,
     // justifyContent: "center",
-    flexWrap:1
+    // flexWrap:1
   },
   payText: {
     borderBottomWidth: 0.1,
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomColor: "gray",
     width: 330,
-    marginHorizontal: 5,
+    marginHorizontal:5
   },
   conText: {
     fontFamily: "italic",

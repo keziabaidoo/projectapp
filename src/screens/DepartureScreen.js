@@ -18,7 +18,7 @@ var header= (
 <View style ={[styles.header_footer_style,styles.input]}>
 <Text style ={styles.textStyle}>Select departure</Text>
 <TouchableOpacity onPress={()=>{
- this.props.navigation.navigate('WelcomePageScreen')
+ navigation.goBack()
 }}>
   <Fontisto name="close-a" size={18} color="orange" style={{marginLeft:120}}/>
 </TouchableOpacity>
@@ -95,7 +95,7 @@ item: {
 padding: 15,
 fontSize: 14,
 height: 44,
-fontStyle:'Roboto',
+// fontFamily:'roboto',
 flexDirection:'row',
 justifyContent:'space-between'
 },

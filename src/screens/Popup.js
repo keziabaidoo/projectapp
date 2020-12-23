@@ -33,7 +33,7 @@ export default class Popup extends Component {
         visible={show}
         onRequestClose={() => {}}
       >
-        <View style={{ flex: 1, backgroundColor: "#000000AA" }}>
+        <View style={{ flex: 1, backgroundColor: "orange" }}>
           {/* <Text>Manage Booking</Text> */}
           <Pressable
             onPress={() => {
@@ -46,7 +46,7 @@ export default class Popup extends Component {
             style={{
               bottom: 0,
               // position: "absolute",
-              width: "200%",
+              width: "100%",
               backgroundColor: "white",
               borderTopLeftRadius: 15,
               borderTopRightRadius: 15,
@@ -58,9 +58,10 @@ export default class Popup extends Component {
               style={{
                 alignItems: "center",
                 color: "black",
-                fontSize: 20,
+                fontSize: 15,
                 fontWeight: "500",
                 margin: 15,
+                fontFamily:'ubuntu'
               }}
             >
               {title}
@@ -68,14 +69,14 @@ export default class Popup extends Component {
                 name="close"
                 size={23}
                 color="orange"
-                style={{ marginLeft: 110 }}
+                style={{ marginLeft: 110 ,}}
               />
             </Text>
 
             <View>
               <TextInput
                 defaultValue="Confirmation Number"
-                placeholderTextColor="black"
+                // placeholderTextColor="black"
                 style={{
                   height: 50,
                   justifyContent: "center",
@@ -84,13 +85,17 @@ export default class Popup extends Component {
                   margin: 10,
                   borderWidth: 1,
                   fontSize: 12,
-                  fontWeight: "bold",
+                  fontWeight: "400",
                   borderColor: "gray",
+                  fontFamily:'ubuntu',
+                  marginLeft:10
+                  
+
                 }}
               />
               <TextInput
                 defaultValue="Last Name"
-                placeholderTextColor="black"
+                // placeholderTextColor="black"
                 style={{
                   height: 50,
                   justifyContent: "center",
@@ -99,12 +104,17 @@ export default class Popup extends Component {
                   margin: 10,
                   borderWidth: 1,
                   fontSize: 12,
-                  fontWeight: "bold",
+                  fontWeight: "400",
                   borderColor: "gray",
+                  fontFamily:'ubuntu',
+                  marginLeft:10
                 }}
               />
             </View>
             <TouchableOpacity
+            onPress={()=>{
+              navigation.navigate('ResultPageScreen')
+            }}
               style={{
                 backgroundColor: "orange",
                 width: 280,

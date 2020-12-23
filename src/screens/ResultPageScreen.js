@@ -120,7 +120,9 @@ export default class ResultPageScreen extends Component {
         </View>
         </TouchableOpacity>
 
- 
+ <TouchableOpacity onPress={()=>{
+   navigation.navigate('SignInScreen')
+ }}>
         <View style={[styles.boxText]}>
 
 <View style={styles.text_info}> 
@@ -144,6 +146,8 @@ export default class ResultPageScreen extends Component {
   marginBottom:10,color:'gray',fontWeight:'bold'}}>Operated by Malta Air</Text>  
   </View>
   </View>
+  </TouchableOpacity>
+
      
       </ScrollView>
     );

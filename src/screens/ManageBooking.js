@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
   antText: {
     // marginLeft: 200,
     marginBottom: 20,
+    // fontFamily:'ubuntu'
   },
   searchText: {
     // marginLeft: 100,

@@ -12,6 +12,9 @@ import PaymentScreen from './src/screens/PaymentScreen';
 import CreditCardScreen from './src/screens/CreditCardScreen'
 import MobilePaymentScreen from "./src/screens/MobilePaymentScreen";
 import BookingSummaryScreen from './src/screens/BookingSummaryScreen'
+import SignInScreen from './src/screens/SignInScreen'
+import SignUpScreen from './src/screens/SignUpScreen';
+import WelcomeHomeScreen from './src/screens/WelcomeHomeScreen'
 
 
 const Stack = createStackNavigator();
@@ -52,6 +55,7 @@ const TransitionConfiguration = () => {
 export default function App() {
   return (
     <View style={styles.container}>
+
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -66,7 +70,7 @@ export default function App() {
           }}
         >
 
-          <Stack.Screen name="WelcomePage" component={WelcomePageScreen} />
+          <Stack.Screen name="WelcomeHomeScreen" component={WelcomeHomeScreen} />
           {/* <Stack.Screen name="Date" component={DataScreen} /> */}
           <Stack.Screen
             Options={{
@@ -155,6 +159,32 @@ export default function App() {
             },
           }} 
           name='BookingSummaryScreen' component={BookingSummaryScreen}
+          />
+
+<Stack.Screen 
+          Options={{
+            headerTitle: "RentAir Ghana",
+            headerTintColor: "white",
+            headerTitleAlign: "left",
+            fontWeight: "bold",
+            headerStyle: {
+              backgroundColor: "orange",
+            },
+          }} 
+          name='SignInScreen' component={SignInScreen}
+          />
+
+<Stack.Screen 
+          Options={{
+            headerTitle: "RentAir Ghana",
+            headerTintColor: "white",
+            headerTitleAlign: "left",
+            fontWeight: "bold",
+            headerStyle: {
+              backgroundColor: "orange",
+            },
+          }} 
+          name='SignUpScreen' component={SignUpScreen}
           />
                   </Stack.Navigator>
 
