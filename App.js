@@ -70,7 +70,7 @@ export default function App() {
           }}
         >
 
-          <Stack.Screen name="WelcomeHomeScreen" component={WelcomeHomeScreen} />
+          <Stack.Screen name="WelcomePageScreen" component={WelcomePageScreen} />
           {/* <Stack.Screen name="Date" component={DataScreen} /> */}
           <Stack.Screen
             Options={{

@@ -132,15 +132,14 @@ export default class WelcomePageScreen extends Component {
                   width: 62,
                   shadowRadius: 4,
                   shadowColor: "#000",
-                // shadowOffset: { width: 1, height: 1 },
-                shadowOpacity: 0.8,
-                shadowRadius: 1,
-                borderRadius:3,
-                borderColor:'lightgray',
-                fontSize:13,
-                fontFamily:'ubuntu',
-                fontWeight:'300'
-                
+                  // shadowOffset: { width: 1, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 1,
+                  borderRadius: 3,
+                  borderColor: "lightgray",
+                  fontSize: 13,
+                  fontFamily: "ubuntu",
+                  fontWeight: "300",
                 }}
               >
                 <Picker.Item
@@ -160,7 +159,7 @@ export default class WelcomePageScreen extends Component {
                     fontSize: 13,
                     letterSpacing: 2,
                     fontWeight: "600",
-                    fontFamily:'roboto'
+                    fontFamily: "roboto",
                   }}
                 >
                   <Picker.Item label="GHS" value="GHS" />
@@ -312,13 +311,41 @@ export default class WelcomePageScreen extends Component {
                 border: 2,
               }}
             >
-              <TouchableOpacity style={{ padding: 5 }}>
-                <Text style={[styles.Booking_Text, styles.searchText]}>
-                  Search
-                </Text>
-              </TouchableOpacity>
-            </button> */}
+             </button> */}
           </View>
+          {/* <View style={styles.mainText}> */}
+          <TouchableOpacity
+            style={{
+              width: 200,
+              height: 30,
+              borderWidth: 1,
+              alignSelf: "center",
+              backgroundColor: "orange",
+              margin: 10,
+              borderRadius: 20,
+              shadowColor: "#000",
+              shadowOffset: { width: 1, height: 1 },
+              shadowOpacity: 0.8,
+              shadowRadius: 1,
+              borderRadius: 5,
+            }}
+            onPress={() => {
+              navigation.navigate("ResultPageScreen");
+            }}
+          >
+            <Text
+              style={{
+                alignSelf: "center",
+                paddingTop: 3,
+                fontFamily: "ubuntu",
+                fontSize: 20,
+                color: "white",
+              }}
+            >
+              Search
+            </Text>
+          </TouchableOpacity>
+          {/* </View> */}
         </View>
       </ScrollView>
     );
@@ -413,8 +440,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     // borderRadius: 'none',
     fontFamily: "ubuntu",
-    fontSize:15
-    
+    fontSize: 15,
   },
   passStyle: {
     fontSize: 10,
