@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   },
   selectedText:{
        height:35,
-       width:'23%',
+       width:23,
        borderWidth:1,
        paddingTop:5,
        textAlign:'center'
@@ -266,12 +266,12 @@ const styles = StyleSheet.create({
      
   },
 firstText:{
-   width:'40%',
+   width:40,
    fontFamily:'bold'
 
 },
 secondText:{
-  width:'45%',
+  width:45,
   fontFamily:'bold'
   
 },
