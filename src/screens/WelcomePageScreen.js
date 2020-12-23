@@ -236,7 +236,7 @@ export default class WelcomePageScreen extends Component {
               <TouchableOpacity
                 onePress={() => navigation.navigate("DateScreen")}
               >
-                <Text style={{ marginLeft: 9 }}>Dates</Text>
+                <Text style={{ marginLeft: 9,fontFamily:'ubuntu' ,fontWeight:'300'}}>Dates</Text>
 
                 <Text style={styles.dateformat}>Select date(s)</Text>
 
@@ -270,7 +270,7 @@ export default class WelcomePageScreen extends Component {
               >
                 <Text style={styles.passengerText}> Select passengers</Text>
                 <Text style={[styles.passengerText, styles.passStyle]}>
-                  1 addult
+                  1 adult
                 </Text>
               </TouchableOpacity>
             </View>
@@ -429,10 +429,12 @@ const styles = StyleSheet.create({
     fontFamily: "bold",
   },
   TextContent: {
-    fontSize: 11,
+    fontSize: 15,
     paddingEnd: 20,
     justifyContent: "center",
     paddingTop: 5,
+    fontFamily:'Optima',
+   fontWeight:'500'
   },
   currencyText: {
     // fontSize: 10,
@@ -445,12 +447,17 @@ const styles = StyleSheet.create({
   passStyle: {
     fontSize: 10,
     top: 70,
+    fontFamily:'Arial',
+    fontWeight:'600'
   },
 
   passengerText: {
     // paddingTop: 0.5,
     // marginBottom: 60,
     left: 30,
+    fontFamily:'ubuntu',
+
+    fontWeight:'350'
   },
   tripText: {
     marginLeft: 20,
@@ -520,6 +527,8 @@ const styles = StyleSheet.create({
     top: 300,
     borderRadius: 3,
     paddingTop: 20,
+    fontFamily:'ubuntu',
+    fontWeight:'350'
   },
 
   passText: {
@@ -540,7 +549,7 @@ const styles = StyleSheet.create({
     marginLeft: 25,
   },
   dateformat: {
-    fontSize: 10,
+    fontSize: 15,
     // padding: 10,
     // justifyContent: "flex-start",
     justifyContent: "center",
@@ -548,5 +557,9 @@ const styles = StyleSheet.create({
     top: 80,
     // borderRadius: 3,
     paddingTop: 3,
+ fontFamily:'Optima',
+ fontWeight:'500'
+
+   
   },
 });
