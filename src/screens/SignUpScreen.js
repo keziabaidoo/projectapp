@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     fontSize: 16,
     paddingLeft: 45,
-    backgroundColor:"rgb(255,255,0.35)",
+    // backgroundColor:"rgb(255,255,0.35)",
     color: "rgba(255,255,255,0.7)",
     // marginHorizontal: 25,
     // paddingTop:20
