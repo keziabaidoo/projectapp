@@ -457,7 +457,7 @@ const styles = StyleSheet.create({
     left: 30,
     fontFamily:'ubuntu',
 
-    fontWeight:'350'
+    fontWeight:'300'
   },
   tripText: {
     marginLeft: 20,
@@ -528,7 +528,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     paddingTop: 20,
     fontFamily:'ubuntu',
-    fontWeight:'350'
+    fontWeight:'200'
   },
 
   passText: {

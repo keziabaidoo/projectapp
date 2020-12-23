@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 14,
     height: 44,
-    fontStyle: "Roboto",
+    fontFamily: "Roboto",
     flexDirection: "row",
     justifyContent: "space-between",
   },

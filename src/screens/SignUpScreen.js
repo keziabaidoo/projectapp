@@ -179,13 +179,15 @@ const SignUpScreen = ({navigation}) => {
         </View>
 
         <View style={{marginTop:15}}>
+        <TouchableOpacity>
+
             <LinearGradient
               colors={['#08d4c4','#01ab9d']}
               style={styles.signinText}
             >
                 <Text style={styles.textSign}>Sign Up</Text>
             </LinearGradient>
-
+            </TouchableOpacity>
             <TouchableOpacity 
               style={[styles.signinText,{
                   borderColor:'#009387',
@@ -198,7 +200,7 @@ const SignUpScreen = ({navigation}) => {
 
             }
             >
-                <Text style={styles.te}>Sign In</Text>
+                <Text style={styles.textSign}>Sign In</Text>
             </TouchableOpacity>
         </View>
 

@@ -230,8 +230,11 @@ const styles = StyleSheet.create({
   },
 
   touchText:{
-    width:80,height:83, borderRadius:50,
-    borderWidth:2,alignSelf:'center',
+    width:80,
+    height:83, 
+    borderRadius:50,
+    borderWidth:2,
+    alignSelf:'center',
     borderColor:'gray'
   }
 });
