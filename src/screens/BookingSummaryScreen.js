@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default class BookingSummaryScreen extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class BookingSummaryScreen extends Component {
   }
 
   render() {
+    const {navigation} = this.props
     return (
       <View style={styles.container}>
         <View style={{backgroundColor:'white', shadowColor: "gray",
@@ -17,20 +19,26 @@ export default class BookingSummaryScreen extends Component {
                shadowRadius: 1,
                borderRadius: 3,
                borderColor:'lightgray',
+               flexDirection:'row',
                height:50}}>
           <Text
             style={{
               // backgroundColor: "white",
-              fontSize:20,
-              fontFamily:'MS PMincho',
+              fontSize:18,
+              // fontFamily:'MS PMincho',
               alignSelf:'center',
-              paddingTop:10,
-              fontWeight:'normal'
+              paddingTop:5,
+              fontWeight:'200',
+              marginLeft:70
             }}
           >
             Booking Summary
-            <AntDesign name="close" size={20} color="orange" style={{marginLeft:50}}/>
           </Text>
+          <TouchableOpacity onPress={()=>{
+            navigation.navigate('ResultPageScreen')
+          }}>
+          <AntDesign name="close" size={20} color="orange" style={{marginLeft:100,paddingTop:15}}/>
+          </TouchableOpacity>
         </View>
         <View
           style={[styles.headerText,styles.input]}
@@ -73,7 +81,7 @@ export default class BookingSummaryScreen extends Component {
             <Text style={{ fontWeight: "bold" }}>Fare</Text>
             <Text style={{ fontWeight: "bold", color: "red" }}>GhC 821.40</Text>
           </View>
-          <Text style={{ alignSelf: "flex-end", color: "orange" }}>
+          <Text style={{ alignSelf: "flex-end", color: "orange" ,marginRight:10}}>
             PREMIUM
           </Text>
 

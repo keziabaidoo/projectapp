@@ -20,7 +20,7 @@ import { EvilIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import DateScreen from "../screens/DateScreen";
+// import DateScreen from "../screens/DateScreen";
 import { BorderlessButton, RawButton, RectButton } from "react-native";
 import Booking from "./Booking";
 import Popup from "./Popup";
@@ -83,15 +83,16 @@ export default class WelcomePageScreen extends Component {
             fontSize: 20,
             marginTop: 0.1,
             // marginHorizontal: 20,
-            backgroundColor: "#72e9ed",
+            backgroundColor: "gray",
 
             textAlign: "center",
-            marginVertical: 30,
+            marginVertical: 5,
             padding: 30,
             // position: "relative",
             border: "none",
-            alignSelf: "stretch",
-            color: "white",
+            alignSelf: 'center',
+            color: "White",
+            
           }}
         >
           RentAir
@@ -138,15 +139,11 @@ export default class WelcomePageScreen extends Component {
                   borderRadius: 3,
                   borderColor: "lightgray",
                   fontSize: 13,
-                  fontFamily: "ubuntu",
+                  fontFamily: "Ubuntu",
                   fontWeight: "300",
                 }}
               >
-                <Picker.Item
-                  label="Currency"
-                  // value="default"
-                  style={[styles.currencyText]}
-                />
+               
                 {/* Currency */}
 
                 <Picker
@@ -159,14 +156,22 @@ export default class WelcomePageScreen extends Component {
                     fontSize: 13,
                     letterSpacing: 2,
                     fontWeight: "600",
-                    fontFamily: "roboto",
+                    fontFamily: "Roboto",
                   }}
                 >
+                   <Picker.Item
+                  label="Currency"
+                  // value="default"
+                  style={[styles.currencyText]}
+                />
                   <Picker.Item label="GHS" value="GHS" />
                   <Picker.Item label="NGN" value="NGN" />
                   <Picker.Item label="USD" value="USD" />
                   <Picker.Item label="XOF" value="XOF" />
-                </Picker>
+                  
+                </Picker> 
+                {/* </Picker.Item> */}
+                
               </View>
               {/* </button> */}
             </TouchableOpacity>
@@ -214,7 +219,7 @@ export default class WelcomePageScreen extends Component {
             </View>
           </View>
           <View>
-            <DateScreen />
+            {/* <DateScreen /> */}
           </View>
           <View style={styles.main_content}>
             {/* <button> */}
@@ -234,9 +239,9 @@ export default class WelcomePageScreen extends Component {
             </TouchableOpacity>
             <View style={styles.dateText}>
               <TouchableOpacity
-                onePress={() => navigation.navigate("DateScreen")}
+                // onePress={() => navigation.navigate("DateScreen")}
               >
-                <Text style={{ marginLeft: 9,fontFamily:'ubuntu' ,fontWeight:'300'}}>Dates</Text>
+                <Text style={{ marginLeft: 9,fontFamily:'Ubuntu' ,fontWeight:'300'}}>Dates</Text>
 
                 <Text style={styles.dateformat}>Select date(s)</Text>
 
@@ -337,7 +342,7 @@ export default class WelcomePageScreen extends Component {
               style={{
                 alignSelf: "center",
                 paddingTop: 3,
-                fontFamily: "ubuntu",
+                // fontFamily: "Ubuntu",
                 fontSize: 20,
                 color: "white",
               }}
@@ -374,7 +379,6 @@ const styles = StyleSheet.create({
   },
   InfoText: {
     borderWidth: 1,
-
     height: 60,
     marginTop: 30,
     width: 310,
@@ -441,7 +445,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     marginTop: 5,
     // borderRadius: 'none',
-    fontFamily: "ubuntu",
+    // fontFamily: "Ubuntu",
     fontSize: 15,
   },
   passStyle: {
@@ -455,7 +459,7 @@ const styles = StyleSheet.create({
     // paddingTop: 0.5,
     // marginBottom: 60,
     left: 30,
-    fontFamily:'ubuntu',
+    fontFamily:'Ubuntu',
 
     fontWeight:'300'
   },
@@ -467,7 +471,7 @@ const styles = StyleSheet.create({
 
   TextOne: {
     borderWidth: 1,
-    width: "12em",
+    width: 155,
     height: 40,
     paddingTop: 10,
     borderColor: "gray",
@@ -527,7 +531,7 @@ const styles = StyleSheet.create({
     top: 300,
     borderRadius: 3,
     paddingTop: 20,
-    fontFamily:'ubuntu',
+    fontFamily:'Ubuntu',
     fontWeight:'200'
   },
 

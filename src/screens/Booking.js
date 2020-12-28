@@ -34,7 +34,7 @@ export default class Booking extends Component  {
             height: 30,
             alignItems: "center",
             justifyContent: "center",
-            marginStart: "10",
+            // marginStart: "10",
           }}
           onPress={() => {
             this.setState({
@@ -42,7 +42,7 @@ export default class Booking extends Component  {
             });
           }}
         >
-          <Text style={{fontSize:15,fontStyle:'italic'}}>My Booking</Text>
+          {/* <Text style={{fontSize:15,fontStyle:'italic'}}>My Booking</Text> */}
         </TouchableOpacity>
         {/* <View style={styles.mainText}>
         <TouchableOpacity onPress={()=>{

@@ -37,9 +37,10 @@ export default function MobilePaymentScreen({navigation}){
         <Text
           style={{
             paddingTop: 20,
-            fontFamily: "Arial",
+            // fontFamily: "Arial",
             fontSize: 18,
             padding: 20,
+            alignSelf:'center'
           }}
         >
           Mobile Payment
@@ -48,8 +49,8 @@ export default function MobilePaymentScreen({navigation}){
           style={{
             // borderWidth: 1,
             // borderRadius: 5,
-            height: 30,
-            width: 400,
+            // height: 30,
+            // width: 400,
             paddingTop: 5,
             flexDirection: "row",
             marginLeft: 30,
@@ -65,24 +66,19 @@ export default function MobilePaymentScreen({navigation}){
             style={{ marginBottom: 5 }}
           />
           <Text
-            style={{ paddingTop: 5, fontFamily: "Italic", marginRight: 70 }}
+            style={{ paddingTop: 5, marginRight: 70 }}
           >
             Momo
           </Text>
         </View>
         <View
           style={{
-            flex: 20,
-            height: '10%',
-            width: 250,
+            height: 330,
+            width: 320,
             backgroundColor: "#f2e9d5",
             marginLeft: 25,
-            // borderRadius: 3,
+            borderRadius: 3,
             margin: 10,
-            flexBasis: 1,
-            flexShrink: 1,
-            
-         
           }}
         >
           <View style={{ flexDirection: "row" }}>
@@ -97,30 +93,33 @@ export default function MobilePaymentScreen({navigation}){
             </Text>
           </View>
           <View style={styles.cardText}>
-            <Text style={{ fontFamily: "Roboto", fontSize: 16, color: "gray" }}>
+            <Text style={{  fontSize: 16, color: "gray",marginLeft:10 }}>
               Phone Number
               <Text style={{ lineHeight: 17, color: "red" }}>*</Text>
             </Text>
             <TextInput
               style={{
                 height: 40,
-                width: 220,
+                width: 290,
                 // alignSelf: "center",
                 borderColor: "gray",
                 borderWidth: 1,
                 marginRight: 20,
                 color: "black",
                 fontSize: 18,
-                fontFamily: "roboto",
+                // fontFamily: "roboto",
                 shadowColor: "#000",
                 shadowOffset: { width: 1, height: 1 },
                 shadowOpacity: 0.8,
                 shadowRadius: 1,
-                borderRadius:5
+                borderRadius:5,
+                position:'relative',
+                alignSelf:'center',
+                
               }}
             />
           </View>
-          <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+          <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:110}}>
             <Pressable
               style={({ pressed }) => [
                 {
@@ -129,10 +128,11 @@ export default function MobilePaymentScreen({navigation}){
                 styles.button,
                 
               ]}
-              // onPress={showAlert}
+              onPress={() => Alert.alert('Payment Successfully!')}
+
             >
               <Text style={styles.buttonText}>Submit
-              <AntDesign name="right" size={16} color="white" style={{paddingTop:5,marginLeft:10}} />
+              <AntDesign name="right" size={16} color="white" style={{paddingTop:5,marginLeft:15}} />
               </Text>
             </Pressable>
 
@@ -151,13 +151,13 @@ export default function MobilePaymentScreen({navigation}){
 
 const styles = StyleSheet.create({
   container: {
-    flex: 20,
-    height: 300,
-    width: 300,
-    backgroundColor: "lightgray",
-    margin: 10,
-    marginLeft: 20,
-    borderRadius: 10,
+    // flex: 20,
+    height: 480,
+    width: 356,
+    backgroundColor: '#F5FCFF',
+    // margin: 10,
+    // marginLeft: 20,
+    // borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.8,
@@ -166,7 +166,9 @@ const styles = StyleSheet.create({
   },
   cardText: {
     margin: 10,
-    paddingTop:60
+    paddingTop:60,
+    marginLeft:15
+
   },
   buttonText: {
     fontSize: 16,
@@ -175,8 +177,8 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     padding: 6,
-    height: 35,
-    width: "40%",
+    height: 40,
+    width: 100,
     justifyContent: "center",
     alignItems: "center",
     elevation: 5,
@@ -186,6 +188,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
-    marginRight:40
+    // marginLeft:40
   },
 });

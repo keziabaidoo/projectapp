@@ -38,10 +38,10 @@ export default class CreditCardScreen extends Component {
         <Text
           style={{
             paddingTop: 20,
-            fontFamily: "Helvetica",
+            // fontFamily: "Helvetica",
             fontSize: 18,
             padding: 20,
-            // alignSelf: "center",
+            alignSelf: "center",
           }}
         >
           Payment method
@@ -50,10 +50,10 @@ export default class CreditCardScreen extends Component {
         <View
           style={{
             // borderWidth: 1,
-            borderRadius: 3,
+            borderRadius: 5,
             height: 30,
-            width: 300,
-            paddingTop: 5,
+            width: 320,
+            paddingTop: 3,
             flexDirection: "row",
             marginLeft: 30,
             // justifyContent: "space-evenly",
@@ -63,7 +63,7 @@ export default class CreditCardScreen extends Component {
             shadowOpacity: 0.8,
             shadowRadius: 1,
             shadowColor: "#000",
-            borderColor: "lighgray",
+            borderColor: "gray",
           }}
         >
           <MaterialIcons
@@ -72,7 +72,7 @@ export default class CreditCardScreen extends Component {
             color="orange"
             style={{ marginBottom: 5, marginRight: 5 }}
           />
-          <Text style={{ paddingTop: 5, fontFamily: "Arial" }}>
+          <Text style={{ paddingTop: 3, }}>
             Credit Card
           </Text>
           {/* <FontAwesome5
@@ -85,13 +85,12 @@ export default class CreditCardScreen extends Component {
 
         <View
           style={{
-            flex: 20,
-            height: 200,
-            width: 310,
+            height: 425,
+            width: 320,
             backgroundColor: "#f2e9d5",
             marginLeft: 20,
-            borderRadius: 3,
-            margin: 10,
+            borderRadius: 10,
+            margin: 5,
           }}
         >
           <View style={{ flexDirection: "row" }}>
@@ -106,7 +105,7 @@ export default class CreditCardScreen extends Component {
             </Text>
           </View>
           <View style={styles.cardText}>
-            <Text style={{ fontFamily: "Roboto", fontSize: 16, color: "gray" }}>
+            <Text style={{ fontSize: 16, color: "gray",marginLeft:10 ,paddingTop:5}}>
               Name on Card
               <Text style={{ lineHeight: 17, color: "red" }}>*</Text>
             </Text>
@@ -120,7 +119,7 @@ export default class CreditCardScreen extends Component {
                 marginRight: 20,
                 color: "black",
                 fontSize: 18,
-                fontFamily: "roboto",
+                // fontFamily: "roboto",
                 shadowColor: "#000",
                 shadowOffset: { width: 1, height: 1 },
                 shadowOpacity: 0.8,
@@ -133,12 +132,13 @@ export default class CreditCardScreen extends Component {
           <View style={styles.cardText}>
             <Text
               style={{
-                fontFamily: "Roman",
+                // fontFamily: "Roman",
                 fontSize: 16,
                 // padding: 10,
-                // marginLeft: 20,
+                marginLeft: 10,
                 lineHeight: 30,
                 color: "gray",
+                paddingTop:5
               }}
             >
               
@@ -149,7 +149,7 @@ export default class CreditCardScreen extends Component {
               style={{
                 color: "black",
                 fontSize: 18,
-                fontFamily: "roboto",
+                // fontFamily: "roboto",
                 height: 40,
                 width: 290,
                 borderWidth: 1,
@@ -166,12 +166,13 @@ export default class CreditCardScreen extends Component {
           <View style={styles.cardText}>
             <Text
               style={{
-                fontFamily: "Roman",
+                // fontFamily: "Roman",
                 fontSize: 16,
                 // padding: 10,
-                // marginLeft: 20,
+                marginLeft: 5,
                 lineHeight: 30,
                 color: "gray",
+                paddingTop:5
               }}
             >
               Expiration Date
@@ -181,7 +182,7 @@ export default class CreditCardScreen extends Component {
               style={{
                 //   color: "black",
                 fontSize: 15,
-                fontFamily: "roboto",
+                // fontFamily: "roboto",
                 height: 40,
                 width: 200,
                 borderWidth: 1,
@@ -198,12 +199,13 @@ export default class CreditCardScreen extends Component {
           <View style={styles.cardText}>
             <Text
               style={{
-                fontFamily: "Roman",
+                // fontFamily: "Roman",
                 fontSize: 16,
                 // padding: 10,
-                // marginLeft: 20,
+                marginLeft: 5,
                 lineHeight: 30,
                 color: "gray",
+                paddingTop:5
               }}
             >
               CVV Code
@@ -214,7 +216,7 @@ export default class CreditCardScreen extends Component {
                 color: "black",
                 borderRadius: 5,
                 fontSize: 18,
-                fontFamily: "roboto",
+                // fontFamily: "roboto",
                 height: 40,
                 width: 200,
                 borderWidth: 1,
@@ -238,8 +240,8 @@ export default class CreditCardScreen extends Component {
                 },
                 styles.button,
               ]}
+              onPress={() => Alert.alert('Payment Successfully!')}
 
-              // onPress={showAlert}
             >
               <Text style={styles.buttonText}>Submit
               <AntDesign name="right" size={16} color="white" style={{paddingTop:5,marginLeft:10}}/>
@@ -260,14 +262,14 @@ export default class CreditCardScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 5,
-    flex: 7,
-    height: 50,
-    width: 350,
-    backgroundColor: "lightgray",
-    margin: 5,
-    marginLeft: 10,
-    borderRadius: 10,
+    // marginHorizontal: 5,
+    // flex: 7,
+    height: 550,
+    width: 359,
+    backgroundColor:'#F5FCFF' ,
+    // margin: 5,
+    // marginLeft: 10,
+    // borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.8,

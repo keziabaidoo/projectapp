@@ -20,18 +20,16 @@ export default class ResultPageScreen extends Component {
             <Text
           style={{
             fontWeight: "bold",
-            fontSize: 20,
-            marginTop: 0.1,
+            fontSize: 23,
+            marginTop: 1,
             // marginHorizontal: 20,
-            backgroundColor: "#72e9ed",
+            backgroundColor: "#72E9ED",
 
             textAlign: "center",
-            marginVertical: 30,
+            // marginVertical: 30,
             padding: 30,
-            // position: "relative",
-            border: "none",
-            alignSelf: "stretch",
-            color: "white",
+            
+            color:'white'
           }}
         >
           RentAir
@@ -45,14 +43,14 @@ export default class ResultPageScreen extends Component {
         <Text style={{padding: 5,alignSelf:'center',fontSize:30,fontWeight:'bold',marginLeft:10,lineHeight:30}}>29</Text>
         <Text style={{lineHeight: 40,paddingTop:10}}>.99</Text>
 
-        <Text style={{paddingTop:3,color:'gray',fontFamily:'Arial, Helvetica, sans-serif',lineHeight:17}}>GBP</Text>
+        <Text style={{paddingTop:3,color:'gray',fontFamily:'normal',lineHeight:17}}>GBP</Text>
 
         </View>
         </View>
         <Text>Fri 26 Jun</Text>
         </View>
         <TouchableOpacity onPress={()=>{
-          navigation.navigate('WelcomePageScreen')
+          navigation.navigate('WelcomeHomeScreen')
         }} >
         <Text style={styles.TextStyle}>Change Search</Text>
         </TouchableOpacity>
@@ -85,7 +83,7 @@ export default class ResultPageScreen extends Component {
         <View style={styles.box2Text}>
         <Text style={styles.box2}>Too late! The flight is sold out</Text>
         <Text style={{alignSelf:'center',justifyContent:'center',
-        marginBottom:10,color:'gray',fontWeight:'bold'}}>Operated by Malta Air</Text>  
+        marginBottom:5,color:'gray',fontWeight:'bold'}}>Operated by Malta Air</Text>  
         </View>
         </View>
 
@@ -113,9 +111,9 @@ export default class ResultPageScreen extends Component {
         </View>
        
         <View style={styles.box2Text}>
-        <Text style={styles.box2}>Value fare <Text style={{color:'orange',alignSelf:'center'}}>21.99 GBP</Text></Text>
+        <Text style={styles.box2}>Value fare <Text style={{color:'orange',alignSelf:'center',marginRight:10}}>21.99 GBP</Text></Text>
         <Text style={{alignSelf:'center',justifyContent:'center',
-        marginBottom:10,color:'gray',fontWeight:'bold'}}>Operated by Malta Air</Text>  
+        marginBottom:5,color:'gray',fontWeight:'bold'}}>Operated by Malta Air</Text>  
         </View>
         </View>
         </TouchableOpacity>
@@ -143,7 +141,7 @@ export default class ResultPageScreen extends Component {
   <View style={styles.box2Text}>
   <Text style={styles.box2}>Too late! The flight is sold out</Text>
   <Text style={{alignSelf:'center',justifyContent:'center',
-  marginBottom:10,color:'gray',fontWeight:'bold'}}>Operated by Malta Air</Text>  
+  marginBottom:5,color:'gray',fontWeight:'bold'}}>Operated by Malta Air</Text>  
   </View>
   </View>
   </TouchableOpacity>
@@ -178,7 +176,7 @@ const styles = StyleSheet.create({
     borderTopWidth:1,
     borderTopColor:'gray',
     justifyContent:'center',
-    paddingTop:10,
+    // paddingTop:10,
 
   },
 
@@ -236,8 +234,8 @@ const styles = StyleSheet.create({
     flex: 2,
     margin:20,
     backgroundColor: '#f2e9d5',
-    height:100,
-    width:320,
+    height:120,
+    width:330,
     borderRadius:5,
     borderStartColor:'orange',
     borderStartWidth:5,
@@ -307,6 +305,7 @@ secondText:{
    paddingTop:15,
     width: 200,
     height: 40,
+    marginLeft:10,
     // Uncomment the following style to see flex effects
     //flex: 2,
      alignSelf:'center',
@@ -338,7 +337,7 @@ secondText:{
     height: 75, 
     // Uncomment the following style to see flex effects
     //flex: 3,
-    backgroundColor: 'brown',
+    // backgroundColor: 'brown',
     padding: 5,
 
   },

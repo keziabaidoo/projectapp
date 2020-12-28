@@ -71,6 +71,7 @@ export default class PassengersScreen extends Component {
                 style={{}}
                 onClick={this.IncrementItem}
               />
+              
             </View>
             {/* <button onClick={this.ToggleClick}>
               {this.state.show ? "Hide number" : "Show number"}
@@ -78,9 +79,7 @@ export default class PassengersScreen extends Component {
           { <Text style={{ marginBottom: 10 }}>2-12years</Text>*/}
           </Text>
         </View>
-        <View>
-          <Text></Text>
-        </View>
+       
         <View style={[styles.textContent, styles.input]}>
           <Text style={{}}>
             Children

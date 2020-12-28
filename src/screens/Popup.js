@@ -10,144 +10,131 @@ import {
   StyleSheet,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { FlatList } from "react-native-gesture-handler";
+  
+// const deviceHeight = Dimensions.get("window").height;
 
 export default class Popup extends Component {
-  static defaultProps = {
-    title: "",
-    animationType: "slide",
-    haveOutsideTouch: true,
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+    };
+  }
+
+  show = () => {
+    this.setState({ show: true });
   };
 
+  close = () => {
+    this.setState({ show: false });
+  };
+
+  renderOutsideTouchable(onTouch) {
+    const view = <View style={{ flex: 1, width: "100%" }}/>;
+    if (!onTouch) return view;
+
+    return (
+      <TouchableOpacity onPress={onTouch} style={{ flex: 1, width: "100%" }}>
+        {view}
+      </TouchableOpacity>
+    );
+  }
+
+  renderTitle = () =>{
+    const {title} = this.props
+    return(
+      <View style={{marginLeft:20}}>
+      <Text
+        style={{
+          color: "#182E44",
+          fontSize: 25,
+          fontWeight: "500",
+          marginTop: 15,
+          marginBottom:30
+        }}
+      >
+        {title}
+        {/* {this.renderTitle()}
+        {this.renderContent()} */}
+      </Text>
+    </View>
+    )
+  }
+
+  renderContent = () =>{
+    const {data}= this.props
+    return(
+    <View>
+      <FlatList style={{marginBottom:20}}
+      showsVerticalScrollIndicator={false}
+      data={data}
+      renderItem={this.renderItem}
+      extraData={data}
+      keyExtractor={(item , index) => index.toString()}
+      ItemSeparatorComponent = {this.renderSeparator}
+      contentContainerStyle={{
+        paddingBottom:40
+      }}
+
+
+      />
+    </View>
+    )
+  }
+
+  renderItem = ({item}) =>{
+    <View style={{height:50,flex:1,alignItems:'flex-start'}}>
+     <Text style={{fontSize:18,fontWeight:'normal',color:'#182E44'}}>(item.name)</Text>
+    </View>
+  }
+
+  renderSeparator = () =>{
+    <View style={{
+      opacity:0.1,
+      height:1,
+      backgroundColor:'#182E44'
+
+    }}>
+
+    </View>
+  }
+
   render() {
-    const {
-      show,
-      title,
-      animationType,
-      closePopup,
-      haveOutsideTouch,
-    } = this.props;
+    let { show } = this.state;
+
+    const { onTouchOutside ,title } = this.props;
     return (
       <Modal
-        animationType={animationType}
+        animationType={"fade"}
         transparent={true}
         visible={show}
-        onRequestClose={() => {}}
+        onRequestClose={this.close}
       >
-        <View style={{ flex: 1, backgroundColor: "orange" }}>
-          {/* <Text>Manage Booking</Text> */}
-          <Pressable
-            onPress={() => {
-              if (!haveOutsideTouch) return;
-              closePopup();
-            }}
-            style={{ flex: 1 }}
-          ></Pressable>
+        <View style={styles.textInfo}>
+          {this.renderOutsideTouchable(onTouchOutside)}
           <View
-            style={{
-              bottom: 0,
-              // position: "absolute",
+             style={{
+              backgroundColor: "#FFFFFF",
               width: "100%",
-              backgroundColor: "white",
-              borderTopLeftRadius: 15,
-              borderTopRightRadius: 15,
-              height: Dimensions.get("window").height * 0.4,
-              maxHeight: Dimensions.get("window"),
+              borderTopRightRadius: 10,
+              borderTopLeftRadius: 10,
+              paddingHorizontal: 10,
+              // maxHeight: deviceHeight * 0.4,
             }}
           >
-            <Text
-              style={{
-                alignItems: "center",
-                color: "black",
-                fontSize: 15,
-                fontWeight: "500",
-                margin: 15,
-                fontFamily:'ubuntu'
-              }}
-            >
-              {title}
-              <AntDesign
-                name="close"
-                size={23}
-                color="orange"
-                style={{ marginLeft: 110 ,}}
-              />
-            </Text>
-
             <View>
-              <TextInput
-                defaultValue="Confirmation Number"
-                // placeholderTextColor="black"
-                style={{
-                  height: 50,
-                  justifyContent: "center",
-                  width: 280,
-                  alignContent: "center",
-                  margin: 10,
-                  borderWidth: 1,
-                  fontSize: 12,
-                  fontWeight: "400",
-                  borderColor: "gray",
-                  fontFamily:'ubuntu',
-                  marginLeft:10
-                  
-
-                }}
-              />
-              <TextInput
-                defaultValue="Last Name"
-                // placeholderTextColor="black"
-                style={{
-                  height: 50,
-                  justifyContent: "center",
-                  width: 280,
-                  alignContent: "center",
-                  margin: 10,
-                  borderWidth: 1,
-                  fontSize: 12,
-                  fontWeight: "400",
-                  borderColor: "gray",
-                  fontFamily:'ubuntu',
-                  marginLeft:10
-                }}
-              />
-            </View>
-            <TouchableOpacity
-            onPress={()=>{
-              navigation.navigate('ResultPageScreen')
-            }}
-              style={{
-                backgroundColor: "orange",
-                width: 280,
-                height: 30,
-                alignItems: "center",
-                justifyContent: "center",
-                // marginLeft: 100,
-                shadowRadius: 10,
-                borderRadius: 2,
-                justifyContent: "center",
-                fontSize: 17,
-                margin: 10,
-                // color: "white",
-                alignItems: "center",
-              }}
-            >
               <Text
-                style={styles.main_text}
-
-                // height: 50,
-                // justifyContent: "center",
-                // width: 280,
-                // alignContent: "center",
-                // margin: 5,
-                // // borderWidth: 1,
-                // fontSize: 12,
-                // fontWeight: "bold",
-                // backgroundColor: "#72e9ed",
-                // alignSelf: "center",
+                style={{
+                  color: "#182E44",
+                  fontSize: 20,
+                  fontWeight: "500",
+                  margin: 15,
+                }}
               >
-                Show Booking
+                {title}
               </Text>
-            </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -158,5 +145,11 @@ export default class Popup extends Component {
 const styles = StyleSheet.create({
   main_text: {
     color: "white",
+  },
+
+  textInfo: {
+    flex: 1,
+    backgroundColor: "#000000AA",
+    justifyContent: "flex-end",
   },
 });

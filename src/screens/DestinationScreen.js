@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
 
-export default class Departure extends Component {
+export default class DestionationScreen extends Component {
   constructor(props) {
     super(props);
 

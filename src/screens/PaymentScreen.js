@@ -36,7 +36,7 @@ export default class PaymentScreen extends Component {
             style={{
               paddingTop: 10,
               marginLeft: 10,
-              fontFamily: "Roboto",
+              // fontFamily: "Roboto",
               fontSize: 18,
             }}
           >
@@ -52,7 +52,7 @@ export default class PaymentScreen extends Component {
                   <View
                     style={{
                       marginTop: 20,
-                      borderRadius: 2,
+                      borderRadius: 5,
                       borderWidth: 1,
                       width: 310,
                       height: 40,
@@ -79,7 +79,7 @@ export default class PaymentScreen extends Component {
                  
                     style={{
                       marginTop: 20,
-                      borderRadius: 2,
+                      borderRadius: 5,
                       borderWidth: 1,
                       width: 310,
                       height: 40,
@@ -184,30 +184,38 @@ export default class PaymentScreen extends Component {
 
 const styles = StyleSheet.create({
   main_content: {
-    flex: 1,
-    marginHorizontal: 5,
+    // flex: 1,
+    marginHorizontal: 3,
+    height:500,
+    backgroundColor:'#F5FCFF',
+    width:355
   },
   radioText: {
-    height: 20,
-    width: 20,
+    height: 30,
+    width: 25,
   },
   contentText: {
     flexDirection: "row",
     margin: 10,
     // justifyContent: "center",
     borderWidth: 1,
-    paddingTop: 10,
+    paddingTop: 7,
     borderRadius: 30,
-    borderColor: "lightgray",
-    marginHorizontal: 5,
+    borderColor: "gray",
+    // marginHorizontal: 5,
     height: 60,
-    width: 300,
+    width: 330,
   },
 
   moneyText: {
     marginHorizontal: 5,
     // justifyContent: "center",
     // flexWrap:1
+    backgroundColor:'#f2e9d5',
+    height:250,
+    padding:20,
+    borderRadius:10,
+  
   },
   payText: {
     borderBottomWidth: 0.1,
@@ -218,7 +226,7 @@ const styles = StyleSheet.create({
     marginHorizontal:5
   },
   conText: {
-    fontFamily: "italic",
+    // fontFamily: "italic",
     fontSize: 15,
     paddingTop: 5,
     marginRight: 10,
