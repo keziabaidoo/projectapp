@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Picker,
   SafeAreaView,
+  TextInput
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
@@ -34,50 +35,51 @@ const popupList =[
 
 ]
 export default class WelcomeHomeScreen extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      selectedLabel: " value",
-      one: "true or false",
+      selectedLabel:  ''
     };
   }
 
-  show = (value) => {
+  Show = (value) => {
     alert(value);
     this.setState({ selectedLabel: value });
   };
 
-  onePress() {
-    alert("one");
-  }
+  // onePress() {
+  //   alert("one");
+  // }
 
-  fadeAnimation = () => {
-    Animated.timing(this.state.fadeValue, {
-      toValue: 1,
-      duration: 1200,
-    }).start();
-  };
+  // fadeAnimation = () => {
+  //   Animated.timing(this.state.Value, {
+  //     toValue: 2,
+  //     duration: 1700,
+  //   }).start();
+  // };
 
 
  
 
   
   render() {
-   let popupRef= React.createRef()
+  //  let popupRef= React.createRef()
 
-  const onShowPopup = () =>{
-     popupRef.show()
-  }
+  // const onShowPopup = () =>{
+  //    popupRef.show()
+  // }
 
-  const onclosePopup =()=>{
-     popupRef.onClosePopup()
-  }
+  // const onclosePopup =()=>{
+  //    popupRef.onClosePopup()
+  // }
 
 
  const {navigation} = this.props
     return (
+      <View style={styles.container}>
+
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Text
+        {/* <Text
           style={{
             fontWeight: "bold",
             fontSize: 20,
@@ -95,8 +97,7 @@ export default class WelcomeHomeScreen extends Component {
           }}
         >
           RentAir
-        </Text>
-        <View style={styles.container}>
+        </Text> */}
           <View
             style={styles.TextOpacity}
             // style={[styles.tripText, styles.TextOne]}
@@ -110,7 +111,7 @@ export default class WelcomeHomeScreen extends Component {
           </View>
 
           <View style={styles.PickerText}>
-            <TouchableOpacity>
+            <TouchableOpacity >
               <View style={{ marginBottom: 10, fontSize: 10 }}>
                 <Text style={styles.currencyText}>Currency</Text>
 
@@ -119,11 +120,11 @@ export default class WelcomeHomeScreen extends Component {
                     fontSize: 10,
                     letterSpacing: 2,
                     fontWeight: "600",
-                    fontFamily: "Roboto",
+                    // fontFamily: "Roboto",
                     marginBottom: 20,
                   }}
                   selectedLabel={this.state.selectedLabel}
-                  onValueChange={this.show.bind()}
+                  onValueChange={this.Show.bind()}
                   mode="dialog"
                 >
                   <Picker.Item label="GHS" value="GHS" />
@@ -176,9 +177,7 @@ export default class WelcomeHomeScreen extends Component {
             />
             <View style={styles.Textcontent}>
               <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("DepartureScreen");
-                }}
+                  onPress={this.showDate}
               >
                 <Text style={styles.destinationText}>Dates</Text>
 
@@ -224,10 +223,8 @@ export default class WelcomeHomeScreen extends Component {
           </View>
 
           <View style={{ position: "relative" }}>
+            <Text style={{position:'absolute',marginTop:10,marginLeft:50,color:'gray'}}>Promo code </Text>
             <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("DepartureScreen");
-              }}
             >
               <MaterialCommunityIcons
                 name="wallet-giftcard"
@@ -236,7 +233,12 @@ export default class WelcomeHomeScreen extends Component {
                 style={{ marginLeft: 13, paddingTop: 24, position: "absolute" }}
               />
               <View style={styles.Textcontent}>
-                <Text style={styles.destinationText}>Promo code</Text>
+                <TextInput 
+                style={{paddingTop:15,fontWeight: "300",
+                fontSize: 14,
+                color: "black",
+                marginLeft: 40}}>
+                </TextInput>
               </View>
             </TouchableOpacity>
           </View>
@@ -270,7 +272,7 @@ export default class WelcomeHomeScreen extends Component {
           <View style={styles.bookingText}>
             <SafeAreaView>
               <View style={{}}>
-                <TouchableOpacity onPress={onShowPopup}>
+                <TouchableOpacity >
                   <View
                     style={{
                       height: 25,
@@ -303,6 +305,9 @@ export default class WelcomeHomeScreen extends Component {
               /> */}
               {/* <Booking/> */}
             </SafeAreaView>
+            <TouchableOpacity onPress={()=>{
+              navigation.navigate('SignInScreen')
+            }}>
             <View style={{ marginLeft: 50, justifyContent: "center" }}>
               <Octicons
                 name="person"
@@ -312,17 +317,20 @@ export default class WelcomeHomeScreen extends Component {
               />
               <Text style={{ color: "gray" }}>AGENT LOGIN</Text>
             </View>
+            </TouchableOpacity>
           </View>
-        </View>
       </ScrollView>
+      </View>
+
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 2,
+    // marginHorizontal: 2,
     // backgroundColor: '#08d4c4',
+    paddingTop:20
   },
 
   TextOpacity: {

@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button,TextInput, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { Entypo } from "@expo/vector-icons";
 // import Counters from "react-native-counters";
 import {Formik} from 'formik'
-import { Value } from "react-native-reanimated";
 
 export default class PassengersScreen extends Component {
   constructor(props) {
@@ -31,7 +29,6 @@ export default class PassengersScreen extends Component {
 
     return (
       <View>
-     
         <View style={[styles.content, styles.input]}>
           <Text
             style={{
@@ -63,7 +60,7 @@ export default class PassengersScreen extends Component {
                 style={{}}
                 onClick={this.DecreaseItem}
               />
-              {this.state.show ? <h2>{this.state.clicks}</h2> : ""}
+              {/* {this.state.show ? {this.state.clicks} : } */}
               <Entypo
                 name="plus"
                 size={24}

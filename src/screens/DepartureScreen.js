@@ -9,10 +9,11 @@ import {
 } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
 import { color } from "react-native-reanimated";
+import {connect} from 'react-redux'
 
 
 
-export default class DepartureScreen extends Component {
+ class DepartureScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -158,3 +159,6 @@ const styles = StyleSheet.create({
     color: "gray",
   },
 });
+
+
+export default ({},{})(DepartureScreen)

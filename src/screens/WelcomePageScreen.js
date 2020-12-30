@@ -465,7 +465,7 @@ const styles = StyleSheet.create({
   },
   tripText: {
     marginLeft: 20,
-    fontFamily: "Ubuntu",
+    // fontFamily: "Ubuntu",
     fontWeight: "300",
   },
 
@@ -475,7 +475,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingTop: 10,
     borderColor: "gray",
-    fontFamily: "Ubuntu",
+    // fontFamily: "Ubuntu",
     fontWeight: "300",
   },
 

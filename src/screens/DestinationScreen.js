@@ -8,8 +8,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
+import {connect} from 'react-redux'
 
-export default class DestionationScreen extends Component {
+ class DestionationScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -134,3 +135,6 @@ const styles = StyleSheet.create({
     color: "gray",
   },
 });
+
+
+export default connect({},{})(DestionationScreen) ;
