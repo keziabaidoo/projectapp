@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   Picker,
   SafeAreaView,
-  TextInput
+  TextInput,
+  Pressable
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
@@ -81,18 +82,20 @@ export default class WelcomeHomeScreen extends Component {
       <View style={styles.container}>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        
+        <Animatable.View >
           <View
             style={styles.TextOpacity}
             // style={[styles.tripText, styles.TextOne]}
           >
             <TouchableOpacity>
+              
               <Text style={styles.tripText}>Roundtrip</Text>
             </TouchableOpacity>
             <TouchableOpacity>
               <Text style={[styles.TextOne, styles.tripText]}>One Way</Text>
             </TouchableOpacity>
           </View>
+          </Animatable.View>
 
           <View style={styles.PickerText}>
             <TouchableOpacity >

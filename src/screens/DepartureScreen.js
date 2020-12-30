@@ -57,12 +57,13 @@ import {connect} from 'react-redux'
     );
   };
 
-  onItemSelect = (item) => {
-    console.log("item", item);
-  };
+  getListViewItem = (item) => {
+    Alert.alert('Clicked Item : ' + item.key);
+    }
 
   render() {
     const {navigation} = this.props
+    const departure = useSelector(state => state.departure)
 
 
     const data = [
@@ -101,7 +102,7 @@ import {connect} from 'react-redux'
                   }}>
                 <View style={styles.item}>
                 
-                  <Text style={styles.textKey}>{item.key}</Text>
+                  <Text onPress={this.getListViewItem.bind(this, item)}style={styles.textKey}>{item.key}</Text>
                   <Text style={styles.titleText}>{item.title}</Text>
                 </View>
                 </TouchableOpacity>
