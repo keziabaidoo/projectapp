@@ -1,43 +1,52 @@
-import React, { Component } from "react";
-import { View, Button, TouchableOpacity, StyleSheet } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import React, {useState,Component} from 'react';
+import {View, Button, Platform} from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-export default class DateScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isDateTimePickerVisible: false,
-    };
-  }
+ const DateScreen = () => {
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
 
-  showDateTimePicker = () => {
-    this.setState({ isDateTimePickerVisible: true });
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'windows');
+    setDate(currentDate);
   };
 
-  handleDatePicked = (date) => {
-    this.setState({ isDateTimePickerVisible: false });
-  };
-  handleTDateimePicker = () => {
-    this.setState({ isDateTimePickervisible: true });
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
   };
 
-  render() {
-    return (
-      <View style={styles.container}>
-          <TouchableOpacity onPress={this.showDateTimePicker}> 
-        <DateTimePicker
-          isVisible={this.state.isDateTimePickerVisible}
-          onConfirm={this.handleDatePicked}
-          onCancle={this.handleTDateimePicker}
-        />
-        </TouchableOpacity>
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
+
+  return (
+    <View>
+      <View>
+        <Button onPress={showDatepicker} title="Show date picker!" />
       </View>
-    );
-  }
-}
+      <View>
+        <Button onPress={showTimepicker} title="Show time picker!" />
+      </View>
+      {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />
+      )}
+    </View>
+  );
+};
 
-const styles = StyleSheet.create({
-  container: {
-    marginHorizontal:1
-  },
-});
+
+export default DateScreen;

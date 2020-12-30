@@ -34,11 +34,13 @@ const popupList =[
 
 
 ]
+
+
 export default class WelcomeHomeScreen extends Component {
   constructor() {
     super();
     this.state = {
-      selectedLabel:  ''
+      selectedLabel:  ""
     };
   }
 
@@ -51,12 +53,12 @@ export default class WelcomeHomeScreen extends Component {
   //   alert("one");
   // }
 
-  // fadeAnimation = () => {
-  //   Animated.timing(this.state.Value, {
-  //     toValue: 2,
-  //     duration: 1700,
-  //   }).start();
-  // };
+  fadeAnimation = () => {
+    Animated.timing(this.state.Value, {
+      toValue: 2,
+      duration: 1700,
+    }).start();
+  };
 
 
  
@@ -79,25 +81,7 @@ export default class WelcomeHomeScreen extends Component {
       <View style={styles.container}>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        {/* <Text
-          style={{
-            fontWeight: "bold",
-            fontSize: 20,
-            marginTop: 0.1,
-            // marginHorizontal: 20,
-            backgroundColor: "#72e9ed",
-
-            textAlign: "center",
-            marginVertical: 30,
-            padding: 30,
-            // position: "relative",
-            // border: "none",
-            alignSelf: "stretch",
-            color: "white",
-          }}
-        >
-          RentAir
-        </Text> */}
+        
           <View
             style={styles.TextOpacity}
             // style={[styles.tripText, styles.TextOne]}
@@ -176,8 +160,9 @@ export default class WelcomeHomeScreen extends Component {
               style={{ marginLeft: 13, paddingTop: 27, position: "absolute" }}
             />
             <View style={styles.Textcontent}>
-              <TouchableOpacity
-                  onPress={this.showDate}
+              <TouchableOpacity onPress={()=>{
+                navigation.navigate('DateScreen')
+              }}
               >
                 <Text style={styles.destinationText}>Dates</Text>
 
@@ -329,7 +314,8 @@ export default class WelcomeHomeScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     // marginHorizontal: 2,
-    // backgroundColor: '#08d4c4',
+    backgroundColor:'#F5FCFF' ,
+
     paddingTop:20
   },
 

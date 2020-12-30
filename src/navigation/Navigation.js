@@ -58,7 +58,6 @@ const TransitionConfiguration = () => {
  function AppContainer() {
   return (
 
-    <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -231,15 +230,13 @@ const TransitionConfiguration = () => {
           /> 
   </Stack.Navigator>
       </NavigationContainer>
-    </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    height:70,
-    width:360,
-   flex:20
+  backgroundColor:'white'
+   
   },
 });
 
