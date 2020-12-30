@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View ,Animated, Easing, Platform} from "react-native";
-import WelcomePageScreen from "./src/screens/WelcomePageScreen";
+// import WelcomePageScreen from "./src/screens/WelcomePageScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import DateScreen from "../screens/DateScreen";
 import PassengersScreen from "../screens/PassengersScreen";
 import DepartureScreen from "../screens/DepartureScreen";
-import Departure from './src/Departure'
+// import Departure from './src/Departure'
 import ResultPageScreen from '../screens/ResultPageScreen';
 import PaymentScreen from '../screens/PaymentScreen';
 import CreditCardScreen from '../screens/CreditCardScreen'
@@ -55,7 +55,7 @@ const TransitionConfiguration = () => {
 
 
 
- function NavigationContainer() {
+ function AppContainer() {
   return (
 
     <View style={styles.container}>
@@ -244,4 +244,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default NavigationContainer;
+export default AppContainer;

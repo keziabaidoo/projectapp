@@ -161,4 +161,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ({},{})(DepartureScreen)
+export default DepartureScreen;
