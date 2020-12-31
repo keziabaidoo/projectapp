@@ -447,3 +447,6 @@ const styles = StyleSheet.create({
   
  
 });
+
+
+onPress={this.getListViewItem.bind(this, item)}

@@ -9,11 +9,11 @@ import {
 } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
 import { color } from "react-native-reanimated";
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { ActionList } from "../redux/actions/actionList";
 
-
-
- class DepartureScreen extends Component {
+class DepartureScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +23,7 @@ import {connect} from 'react-redux'
   }
 
   renderHeader = () => {
-    const {navigation} = this.props
+    const { navigation } = this.props;
 
     var header = (
       <View style={[styles.header_footer_style, styles.input]}>
@@ -58,13 +58,12 @@ import {connect} from 'react-redux'
   };
 
   getListViewItem = (item) => {
-    Alert.alert('Clicked Item : ' + item.key);
-    }
+    Alert.alert("Clicked Item : " + item.key);
+  };
 
   render() {
-    const {navigation} = this.props
-    const departure = useSelector(state => state.departure)
-
+    const { navigation } = this.props;
+    // const departure = useSelector(state => state.departure)
 
     const data = [
       { id: 1, key: "Abidjan,Felix,Houphouet Boigny,ABJ", title: "(ABJ)" },
@@ -79,10 +78,7 @@ import {connect} from 'react-redux'
       { id: 10, key: "Wa Airport,WZA", title: "(WZA)" },
     ];
 
-
-
     return (
-
       <View style={styles.container}>
         <FlatList
           data={data}
@@ -97,16 +93,22 @@ import {connect} from 'react-redux'
                   this.onItemSelect(item);
                 }}
               >
-                  <TouchableOpacity onPress={()=>{
-                    navigation.navigate('DestinationScreen')
-                  }}>
-                <View style={styles.item}>
-                
-                  <Text onPress={this.getListViewItem.bind(this, item)}style={styles.textKey}>{item.key}</Text>
-                  <Text style={styles.titleText}>{item.title}</Text>
-                </View>
-                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.navigation.navigate("WelcomeHomeScreen");
+                  }}
+                >
+                  <View style={styles.item}>
 
+                  <Text style={styles.titleText}>{item.key}
+                      </Text>
+                       
+                       <Text style={styles.titleText}>
+{item.title}
+                          </Text>
+                 
+                  </View>
+                </TouchableOpacity>
               </TouchableOpacity>
             );
           }}
@@ -115,7 +117,6 @@ import {connect} from 'react-redux'
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -162,4 +163,10 @@ const styles = StyleSheet.create({
 });
 
 
-export default DepartureScreen;
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    ActionList,
+  }, dispatch)
+);
+
+export default connect( mapDispatchToProps)(DepartureScreen);
