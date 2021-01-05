@@ -14,6 +14,7 @@ const INITIAL_STATE = {
       { id: 9, key: "Tamale Airport,TML", title: "(TML)" },
       { id: 10, key: "Wa Airport,WZA", title: "(WZA)" },
   ],
+
     
 };
 

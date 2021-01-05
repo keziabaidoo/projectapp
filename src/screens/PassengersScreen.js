@@ -1,105 +1,154 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Button,TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-// import Counters from "react-native-counters";
-import {Formik} from 'formik'
+import Counters from "react-native-counters";
+import PassengerCount from "../components/PassengerCount";
 
 export default class PassengersScreen extends Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {
-      clicks: 0,
-      show: true,
+      count: 0,
+      adultCount: 0,
+      childCount: 0,
+      infantCount: 0,
     };
   }
 
-  IncrementItem = () => {
-    this.setState({ clicks: this.state.clicks + 1 });
-  };
-  DecreaseItem = () => {
-    this.setState({ clicks: this.state.clicks - 1 });
-  };
-  ToggleClick = () => {
-    this.setState({ show: !this.state.show });
+  decrementCountAdult() {
+    let count = this.state.adultCount;
+    count--;
+    if (count >= 0) {
+      this.setState({
+        adultCount: count,
+      });
+    }
+  }
+  incrementCountAdult() {
+    let count = this.state.adultCount;
+    count++;
+    this.setState({
+      adultCount: count,
+    });
+    console.log(this.state);
+  }
+
+   decrementChildCount() {
+    let count = this.state.childCount;
+    count--;
+    if (count >= 0) {
+      this.setState({
+        childCount: count,
+      });
+      console.log(this.state);
+    }
+  }
+
+  incrementChildCount() {
+    let count = this.state.childCount;
+    count++;
+    this.setState({
+      childCount: count,
+    });
+
+    console.log(this.state);
+  }
+
+  decrementInfantCount() {
+    let count = this.state.infantCount;
+    count--;
+    if (count >= 0) {
+      this.setState({
+        infantCount: count,
+      });
+      console.log(this.decrementInfantCount);
+    }
+  }
+
+  incrementInfantCount() {
+    let count = this.state.infantCount;
+    count++;
+    this.setState({
+      infantCount: count,
+    });
+
+    console.log(this.state);
+  }
+  PassengerCount = () => {
+    console.log(this.state);
   };
 
   render() {
     const { navigation } = this.props;
 
     return (
-      <View>
-        <View style={[styles.content, styles.input]}>
+      <View style={styles.container}>
+        <View style={[styles.textcontent, styles.input]}>
           <Text
             style={{
-              alignItems: "center",
-              alignContent: "center",
               alignSelf: "center",
-              // marginLeft: 50,
+              marginLeft: 50,
+              paddingTop: 10,
+              paddingLeft: 55,
+              fontSize: 16,
             }}
           >
             Select Passengers
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("WelcomeHomeScreen");
+              }}
+            >
               <AntDesign
                 name="close"
                 size={22}
                 color="orange"
-                style={{ marginLeft: 150 }}
+                style={{ marginLeft: 65 }}
               />
             </TouchableOpacity>
           </Text>
         </View>
-        <View style={[styles.textContent, styles.input]}>
-          <Text style={{}}>
-            Adults
-            <View style={{ flexDirection: "row", marginLeft: 270 }}>
-              <AntDesign
-                name="minus"
-                size={24}
-                color="orange"
-                style={{}}
-                onClick={this.DecreaseItem}
-              />
-              {/* {this.state.show ? {this.state.clicks} : } */}
-              <Entypo
-                name="plus"
-                size={24}
-                color="orange"
-                style={{}}
-                onClick={this.IncrementItem}
-              />
-              
-            </View>
-            {/* <button onClick={this.ToggleClick}>
-              {this.state.show ? "Hide number" : "Show number"}
-            </button>
-          { <Text style={{ marginBottom: 10 }}>2-12years</Text>*/}
-          </Text>
-        </View>
-       
-        <View style={[styles.textContent, styles.input]}>
-          <Text style={{}}>
-            Children
-            <View style={{ flexDirection: "row", marginLeft: 270 }}>
-              <AntDesign name="minus" size={24} color="orange" style={{}} />
-              <Entypo name="plus" size={24} color="orange" style={{}} />
-            </View>
-            {/* <Text style={{ marginBottom: 10 }}>2-12years</Text> */}
-          </Text>
-        </View>
-        <View style={[styles.textContent, styles.input]}>
-          <Text style={{}}>
-            Infants
-            <View style={{ flexDirection: "row", marginLeft: 270 }}>
-              <AntDesign name="minus" size={24} color="orange" style={{}} />
-              <Entypo name="plus" size={24} color="orange" style={{}} />
-            </View>
-            {/* <Text style={{ marginBottom: 10 }}>2-12years</Text> */}
-          </Text>
-        </View>
-        <View style={styles.apply_main}>
-          <Text style={styles.applyText}>Apply</Text>
-        </View>
+
+          <PassengerCount
+            name="Adults"
+            description=""
+            count={this.state.adultCount}
+            increment={this.incrementCountAdult.bind(this)}
+            decrement={this.decrementCountAdult.bind(this)}
+          />
+
+          <PassengerCount
+            name="Children"
+            description="2-12years"
+            count={this.state.childCount}
+            increment={this.incrementChildCount.bind(this)}
+            decrement={this.decrementChildCount.bind(this)}
+          />
+          <PassengerCount
+            name="Infants"
+            description="Min 14 days old before air travel,and under 2 years"
+            count={this.state.infantCount}
+            increment={this.incrementInfantCount}
+            decrement={this.decrementInfantCount.bind(this)}
+          />
+
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("WelcomeHomeScreen");
+          }}
+        >
+          <View style={styles.apply_main}>
+            <Text style={styles.applyText}>Apply</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -107,29 +156,29 @@ export default class PassengersScreen extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    margin: 20,
-    flexDirection: "row",
+    // margin: 20,
+    flexDirection: "column",
     alignContent: "center",
   },
-  applyText: { margin: 10, alignSelf: "center", color: "white", fontSize: 15 },
+  applyText: { margin: 10, alignSelf: "center", color: "white", fontSize: 18 },
   apply_main: {
     backgroundColor: "orange",
     width: 120,
-    height: 35,
-    shadowRadius: 10,
+    height: 45,
     marginLeft: 220,
+    margin: 20,
+    borderRadius: 5,
   },
   input: {
     borderBottomWidth: 1,
-    fontSize: 20,
     borderBottomColor: "gray",
     height: 50,
-    marginTop: 20,
+    marginTop: 15,
   },
 
   textContent: {
-    margin: 20,
-    flexDirection: "row",
+    // margin: 20,
+    flexDirection: "column",
     alignContent: "center",
   },
 });

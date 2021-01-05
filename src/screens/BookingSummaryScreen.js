@@ -87,9 +87,9 @@ export default class BookingSummaryScreen extends Component {
 
           <View style={{ marginBottom: 10 }}>
             <Text style={{ color: "gray", margin: 10, flexDirection: "row" }}>
-              1
+                1
               <AntDesign name="close" size={10} color="gray" />
-              adult
+                adult
               <Text style={{ marginLeft: 210 }}>GhC 444.00</Text>
             </Text>
 

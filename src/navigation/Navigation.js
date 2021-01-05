@@ -16,6 +16,7 @@ import SignInScreen from '../screens/SignInScreen'
 import SignUpScreen from '../screens/SignUpScreen';
 import WelcomeHomeScreen from '../screens/WelcomeHomeScreen';
 import DestinationScreen from '../screens/DestinationScreen';
+import WelcomePageScreen from '../screens/WelcomePageScreen'
 
 
 
@@ -227,6 +228,19 @@ const TransitionConfiguration = () => {
             },
           }} 
           name='SignUpScreen' component={SignUpScreen}
+          /> 
+
+<Stack.Screen 
+          Options={{
+            headerTitle: "RentAir Ghana",
+            headerTintColor: "white",
+            headerTitleAlign: "left",
+            fontWeight: "bold",
+            headerStyle: {
+              backgroundColor: "orange",
+            },
+          }} 
+          name='WelcomePageScreen' component={WelcomePageScreen}
           /> 
   </Stack.Navigator>
       </NavigationContainer>

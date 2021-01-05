@@ -44,7 +44,7 @@ export default class SignInScreen extends Component {
      const {navigation} = this.props
     return (
       <ImageBackground
-        source={require("../screens/Image.jpeg")}
+        // source={require("../screens/Image.jpeg")}
         style={styles.container}
       >
         <View>
@@ -58,7 +58,7 @@ export default class SignInScreen extends Component {
           >
             Welcome Back!
           </Text>
-          <Pressable  style={({ pressed }) => [
+          {/* <Pressable  style={({ pressed }) => [
                 {
                   backgroundColor: pressed ? "#b2d1cc" : "white",
                 },
@@ -70,7 +70,7 @@ export default class SignInScreen extends Component {
           style={{alignSelf:'center',
           paddingTop:5,marginLeft:2}} />
     
-          </Pressable>
+          </Pressable> */}
         </View>
         <View>
           <Ionicons
@@ -147,8 +147,6 @@ export default class SignInScreen extends Component {
               // onPress={showAlert}
             >
               <Text style={styles.buttonText}>Login
-              <MaterialIcons name="check" size={20} color="white" style={{marginTop:40,marginLeft:10}}/>
-              {/* <AntDesign name="right" size={16} color="white"  /> */}
               </Text>
             </Pressable>
 
@@ -186,7 +184,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     fontSize: 16,
     paddingLeft: 45,
-    backgroundColor: "rgba(0,0,0,0.35)",
+    // backgroundColor: "rgba(0,0,0,0.35)",
     color: "rgba(255,255,255,0.7)",
     marginHorizontal: 25,
     // paddingTop:20
@@ -209,14 +207,14 @@ const styles = StyleSheet.create({
    
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 18,
     color: "white",
   },
   button: {
     borderRadius: 20,
     padding: 6,
-    height: 35,
-    width: "30%",
+    height: 50,
+    width: 180,
     justifyContent: "center",
     alignItems: "center",
     elevation: 5,
