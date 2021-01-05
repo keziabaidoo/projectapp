@@ -136,7 +136,7 @@ export default class PassengersScreen extends Component {
             name="Infants"
             description="Min 14 days old before air travel,and under 2 years"
             count={this.state.infantCount}
-            increment={this.incrementInfantCount}
+            increment={this.incrementInfantCount.bind(this)}
             decrement={this.decrementInfantCount.bind(this)}
           />
 

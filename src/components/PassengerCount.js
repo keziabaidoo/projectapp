@@ -41,7 +41,7 @@ const PassengerCount = (props) => {
           />
         </View>
       </Text>
-      <Text style={{position:"absolute",paddingTop:15,color:"gray"}}> 
+      <Text style={{position:"absolute",paddingTop:20,color:"gray"}}> 
       {props.description}
       </Text>
     </View>
