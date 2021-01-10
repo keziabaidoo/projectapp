@@ -6,6 +6,7 @@ import AppContainer from './src/navigation/Navigation';
 import authReducer from './src/redux/reducers/authReducer'
 import { View, StyleSheet } from 'react-native';
 
+
 // const store = createStore(authReducer);
 
 

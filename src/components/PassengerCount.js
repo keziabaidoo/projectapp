@@ -14,21 +14,21 @@ const PassengerCount = (props) => {
     props.decrement();
   }
   return (
-    <View style={[styles.textContent, styles.input]}>
+    <View style={[styles.antText,styles.TextInfo]}>
 
-      <Text style={{ marginLeft: 15 ,fontSize:16}}>
+      <Text style={styles.TextInfo}>
         {props.name}
         
 
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.antText}>
           <AntDesign
             name="minus"
             size={24}
             color="orange"
-            style={{ marginLeft: 220 }}
+            style={{ marginLeft: 250, }}
             onPress={decrement}
           />
-          <Text style={{ paddingTop: 5, marginLeft: 7, fontSize: 18 }}>
+          <Text style={{ paddingTop: 5, marginLeft: 5, fontSize: 18 }}>
             {props.count}
           </Text>
 
@@ -41,9 +41,9 @@ const PassengerCount = (props) => {
           />
         </View>
       </Text>
-      <Text style={{position:"absolute",paddingTop:20,color:"gray"}}> 
+      {/* <Text style={{position:"relative",}}>
       {props.description}
-      </Text>
+      </Text> */}
     </View>
   );
 };
@@ -52,15 +52,27 @@ export default PassengerCount;
 
 const styles = StyleSheet.create({
   textContent: {
-    // margin: 20,
-    flexDirection: "row",
-    alignContent: "center",
+// justifyContent:"space-between" ,  
+    // justifyContent:"center",
+    position:"relative"
+
   },
 
   input: {
     borderBottomWidth: 1,
     borderBottomColor: "gray",
     height: 50,
-    marginTop: 15,
+    marginTop:10,
+    width:400
   },
+  antText:{
+    flexDirection:"row",
+    // justifyContent:"space-between",
+    // alignSelf:"center",
+    paddingBottom:5,
+  },
+
+  TextInfo:{
+    marginLeft: 10 ,fontSize:16,paddingTop:5
+  }
 });

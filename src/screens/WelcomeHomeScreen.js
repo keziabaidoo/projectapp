@@ -146,7 +146,7 @@ class WelcomeHomeScreen extends Component {
                       name="chevron-thin-down"
                       size={18}
                       color="orange"
-                      style={{ marginLeft: 65 }}
+                      style={{ marginLeft: 50 }}
                     />
                   </View>
                 </TouchableOpacity>

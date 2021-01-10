@@ -95,7 +95,7 @@ export default class PassengersScreen extends Component {
           <Text
             style={{
               alignSelf: "center",
-              marginLeft: 50,
+              marginLeft: 70,
               paddingTop: 10,
               paddingLeft: 55,
               fontSize: 16,
@@ -142,8 +142,11 @@ export default class PassengersScreen extends Component {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("WelcomeHomeScreen");
+            console.log("hello")
+            navigation.navigate("PassengerDetailsScreen");
+            
           }}
+        
         >
           <View style={styles.apply_main}>
             <Text style={styles.applyText}>Apply</Text>
