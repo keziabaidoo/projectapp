@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import PassengerDetails from "./PassengerDetails";
 
 const PassengerCount = (props) => {
   function increment() {
@@ -16,7 +17,8 @@ const PassengerCount = (props) => {
   return (
     <View style={[styles.antText,styles.TextInfo]}>
 
-      <Text style={styles.TextInfo}>
+      <Text style={styles.TextInfo} 
+      >
         {props.name}
         
 

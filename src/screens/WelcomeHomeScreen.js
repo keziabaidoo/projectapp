@@ -21,6 +21,7 @@ import { MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
 import Popup from "./Popup";
 import Booking from "./Booking";
 import { connect } from "react-redux";
+import Animated from "react-native-reanimated";
 
 const popupList = [
   {
@@ -35,16 +36,16 @@ const popupList = [
 ];
 
 class WelcomeHomeScreen extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      selectedLabel: "",
+      selectedlabel: "",
     };
   }
 
   Show = (value) => {
     alert(value);
-    this.setState({ selectedLabel: value });
+    this.setState({ selectedlabel: value });
   };
 
   // onePress() {
@@ -55,6 +56,7 @@ class WelcomeHomeScreen extends Component {
     Animated.timing(this.state.Value, {
       toValue: 2,
       duration: 1700,
+      easing: Easing.linear
     }).start();
   };
 
@@ -68,8 +70,6 @@ class WelcomeHomeScreen extends Component {
     // const onclosePopup =()=>{
     //    popupRef.onClosePopup()
     // }
-
-    
 
     const { navigation } = this.props;
     return (
@@ -93,32 +93,35 @@ class WelcomeHomeScreen extends Component {
               </TouchableOpacity>
             </View>
             {/* </Animatable.View> */}
+            <Animatable.View 
+            animation= 'fadeInUpBig'
 
-            <View style={styles.PickerText}>
-              <TouchableOpacity>
-                <View style={{ marginBottom: 10, fontSize: 10 }}>
-                  <Text style={styles.currencyText}>Currency</Text>
-
-                  <Picker
-                    style={{
-                      fontSize: 10,
-                      letterSpacing: 2,
-                      fontWeight: "600",
-                      // fontFamily: "Roboto",
-                      marginBottom: 20,
-                    }}
-                    selectedLabel={this.state.selectedLabel}
-                    onValueChange={this.Show.bind()}
-                    mode="dialog"
-                  >
-                    <Picker.Item label="GHS" value="GHS" />
-                    <Picker.Item label="NGN" value="NGN" />
-                    <Picker.Item label="USD" value="USD" />
-                    <Picker.Item label="XOF" value="XOF" />
-                  </Picker>
-                </View>
-              </TouchableOpacity>
-            </View>
+            >
+              <View style={styles.PickerText}>
+                <TouchableOpacity>
+                  <View style={{ marginBottom: 10, fontSize: 10 }}>
+                    <Text style={styles.currencyText}>Currency</Text>
+                    <Picker
+                      style={{
+                        fontSize: 10,
+                        letterSpacing: 2,
+                        fontWeight: "600",
+                        // fontFamily: "Roboto",
+                        marginBottom: 20,
+                      }}
+                      selectedlabel={this.state.selectedlabel}
+                      onValueChange={this.Show.bind()}
+                      mode="dialog"
+                    >
+                      <Picker.Item label="GHS" value="GHS" />
+                      <Picker.Item label="NGN" value="NGN" />
+                      <Picker.Item label="USD" value="USD" />
+                      <Picker.Item label="XOF" value="XOF" />
+                    </Picker>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </Animatable.View>
 
             <View style={{ position: "relative" }}>
               <EvilIcons

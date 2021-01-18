@@ -14,12 +14,14 @@ import PassengerCount from "../components/PassengerCount";
 
 export default class PassengersScreen extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       count: 0,
       adultCount: 0,
       childCount: 0,
       infantCount: 0,
+     
+
     };
   }
 
@@ -29,6 +31,7 @@ export default class PassengersScreen extends Component {
     if (count >= 0) {
       this.setState({
         adultCount: count,
+        passenger1:{}
       });
     }
   }
@@ -86,6 +89,16 @@ export default class PassengersScreen extends Component {
     console.log(this.state);
   };
 
+
+   combineStrings = () =>{
+      let adultCount = "";
+      let childCount = "";
+      let  infantCount = adultCount.concat("", childCount)
+
+      this.setState({count:infantCount})
+      
+   }
+
   render() {
     const { navigation } = this.props;
 
@@ -123,6 +136,7 @@ export default class PassengersScreen extends Component {
             count={this.state.adultCount}
             increment={this.incrementCountAdult.bind(this)}
             decrement={this.decrementCountAdult.bind(this)}
+
           />
 
           <PassengerCount
@@ -138,15 +152,21 @@ export default class PassengersScreen extends Component {
             count={this.state.infantCount}
             increment={this.incrementInfantCount.bind(this)}
             decrement={this.decrementInfantCount.bind(this)}
+            onPress={this.combineStrings}
+
           />
 
         <TouchableOpacity
           onPress={() => {
             console.log("hello")
-            navigation.navigate("PassengerDetailsScreen");
+            navigation.navigate("PassengerDetailsScreen",
+            {adultCount:this.state.adultCount, 
+            childCount:this.state.childCount , 
+            infantCount:this.state.infantCount}
             
-          }}
-        
+            );
+            
+          }} 
         >
           <View style={styles.apply_main}>
             <Text style={styles.applyText}>Apply</Text>
