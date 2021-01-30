@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 import { Text, View, TextInput, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import ManageBooking from "../../other";
 import Popup from "./Popup";
+// import ManageBooking from '../screens/ManageBooking'
 
 export default class Booking extends Component  {
   constructor(props) {
@@ -52,6 +52,7 @@ export default class Booking extends Component  {
         </TouchableOpacity>
         </View> */}
         </View>
+        {/* <ManageBooking/> */}
         <Popup
           My
           Booking={isShow}

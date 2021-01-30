@@ -17,9 +17,10 @@ export default class PassengersScreen extends Component {
     super(props);
     this.state = {
       count: 0,
-      adultCount: 0,
+      adultCount: 1,
       childCount: 0,
       infantCount: 0,
+      
      
 
     };
@@ -27,11 +28,11 @@ export default class PassengersScreen extends Component {
 
   decrementCountAdult() {
     let count = this.state.adultCount;
-    count--;
-    if (count >= 0) {
+     count--;
+    if (count >=1) {
       this.setState({
-        adultCount: count,
-        passenger1:{}
+        adultCount:count ,
+        passenger:{}
       });
     }
   }

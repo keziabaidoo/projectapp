@@ -3,27 +3,58 @@ import React, { Component, useState } from "react";
 import { View, StyleSheet, Text, ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { TextInput } from "react-native-paper";
+import { event, onChange } from "react-native-reanimated";
 import PassengerDetails from "../components/PassengerDetails";
-
 
 export default class PassengerDetailsScreen extends Component {
   constructor(props) {
     super(props);
-    let adultKeys = [0,1];
-    const adultList = adultKeys.map((key) => <PassengerDetails key={key}/>)
-     
-    let childKeys = [0,1];
-    const childList = childKeys.map((key)=> <PassengerDetails key={key}/>)
+    let adultKeys = [...Array(props.route.params.adultCount).keys()];
+    const adultList = adultKeys.map((key) => (
+      <PassengerDetails
+        key={key}
+        passengerDescription="Adult"
+        count={key + 1}
+        onPress={this.addNewItem}
+        // onPress={this.updateIndex}
+        onSurnameChange={this.onSurnameChange}
+        selectedIndex="kezia"
+        // buttons={data.map((e) => e.id)}
+      />
+    ));
 
-    let infantKeys = [0,1];
-    const infantList = infantKeys.map((key)=> <PassengerDetails key={key}/>)
+    let childKeys = [...Array(props.route.params.childCount).keys()];
+    const childList = childKeys.map((key) => (
+      <PassengerDetails
+        key={key}
+        passengerDescription="Child "
+        count={key + 1}
+        selectedIndex={this.state.surname}
+        // buttons={data.map((e) => e.id)}
+      />
+    ));
 
-    let adultcount = [0,1];
-    const adultCountlist = 
+    let infantKeys = [...Array(props.route.params.infantCount).keys()];
+    const infantList = infantKeys.map((key) => (
+      <PassengerDetails
+        key={key}
+        passengerDescription="infant"
+        count={key + 1}
+      />
+    ));
 
     this.state = {
-      text:"",
-      surname: "",
+      surname: [
+        "Andy",
+        "Peterson",
+        "Yally",
+        "Andy",
+        "Peterson",
+        "Yally",
+        "Andy",
+        "Peterson",
+        "Yally",
+      ],
       othername: "",
       title: "",
       datebirth: "",
@@ -31,90 +62,65 @@ export default class PassengerDetailsScreen extends Component {
       childCount: props.route.params.childCount,
       infantCount: props.route.params.infantCount,
       adultList: adultList,
-      childList:childList,
-      infantList:infantList,
-      // passengerDetails:this.props.state.passengerDetails
-      // editable: false
-
+      childList: childList,
+      infantList: infantList,
+      // value: data,
     };
-    // this.toggleEditable = this.toggleEditable.bind(this)
-
+    // this.onUsernameChange = this.onUsernameChange.bind(this);
+    // this.onOthernameChange = this.onOthernameChange.bind(this);
+    // this.onTitleChange = this.onTitleChange.bind(this);
+    // this.onDateOfBirthChange = this.onDateOfBirthChange.bind(this);
   }
 
-//   toggleEditable() {
-//     this.setState({
-//         editable: !this.state.editable
-//     })
-// }
- 
-  onUsernameChange(surname) {
-    let s = this.state;
-    s.surname = surname;
-    this.setState(s);   
- }
+  // updateIndex = (surname) => this.setState({ surname });
 
- onOthernameChange(othername) {
+  onSurnameChange() {
+    console.log(surname);
+  }
+
+  // saveInput = (e) => {
+  //   this.setState({ input: e.target.text });
+  // };
+
+  addNewItem = () => {
+    surname.push(this.state.enteredText.text.toString())
+    Alert.alert(surname.toString());
+  };
+
+  onOthernameChange(othername) {
     let s = this.state;
     s.othername = othername;
-    this.setState(s);   
- }
-
- onTitleChange(title) {
-  let s = this.state;
-  s.title = title;
-  this.setState(s);   
-}
-
-onDateOfBirthChange(dateofbirth) {
-  let s = this.state;
-  s.dateofbirth = dateofbirth;
-  this.setState(s);   
-}
-    
-
- 
-
-  // adultCount = ()=>{
-  //    let adultCount = this.state.adultCount
-  //     if(adultCount >= 0){
-  //       text= navigation.navigate('PassengerDetailScreen')
-  //     }break
-  //   }
-
-       
-    onSelect = ()=>{
-      var count = [adultCount,ChildCount,infantCount]
-      for (let x in onselect){
-        console.log(x)
-      }
-       
-
-      // for (i = 0 ; i <= 5; +11){
-      //   var getPassengerDetails = this.PassengerDetailsScreen(i)
-      // }
-      // return getPassengerDetails
-    }
-
-
-  //  adultCount = ()=>{
-  //    let adultcount = this.state.adultCount
-  //    i=0;
-  //    if(i>5){
-  //       break;
-  //    }
-  //    console.log(count)
-  //  }
-   
-   
-  passengerInfo = (passenger)=>{
-    passenger.id = Math.random();
-    let adultKeys = [...this.state.adultKeys, passenger]
-    this.setState({
-      adultKeys:passengers
-    })
-    
+    this.setState(s);
   }
 
+  onTitleChange(title) {
+    let s = this.state;
+    s.title = title;
+    this.setState(s);
+  }
+
+  onDateOfBirthChange(dateofbirth) {
+    let s = this.state;
+    s.dateofbirth = dateofbirth;
+    this.setState(s);
+  }
+
+  handleSubmit() {
+    this.setState({
+      surname: event.target.value,
+    });
+  }
+
+  onSelect = () => {
+    var count = [adultCount, ChildCount, infantCount];
+    for (let x in onselect) {
+      console.log(x);
+    }
+  };
+
+  componentDidUpdate() {
+    console.log(this.state);
+  }
 
   login = (surname, othername, title, datebirth) => {
     alert(
@@ -130,19 +136,7 @@ onDateOfBirthChange(dateofbirth) {
   };
 
   render() {
-
-    // var adultCount = 5;
-    // switch(adultCount) {
-    //   case "5": alert("PassengerDetailsScreen");
-    // }
-
-    // var infantCount = 1;
-    // switch(x) {
-    //   case "10": alert("Pa");
-    // }
     return (
-    
-
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <Text
@@ -151,40 +145,29 @@ onDateOfBirthChange(dateofbirth) {
               paddingTop: 20,
               fontSize: 16,
               marginRight: 100,
-              fontSize:18,
-              color:'gray'
+              fontSize: 18,
+              color: "gray",
             }}
           >
             Passenger Information
           </Text>
           <View style={{ paddingTop: 20, marginTop: 10 }}>
-                {this.state.adultList}
-                {/* <PassengerDetails passengerDetails={this.state.passengerDetails}/> */}
-                 {this.state.childList}
-               <PassengerDetails 
-                passenger={this.state}
-                onChangeText={this.state.onUsernameChange}
-                onChangeText={this.state.onOthernameChange}
-                onChangeText={this.state.onTitleChange}
-                onChangeText={this.state.onDateOfBirthChange}
-                // editable={this.state.editable} 
-
-
-
-                />
-
-           
+            <View>
+              {this.state.adultList}
+              {/* {this.state.surnameList} */}
+            </View>
+            <View>{this.state.childList}</View>
+            <View>{this.state.infantList}</View>
           </View>
-          <TouchableOpacity
-            onPress={() =>
-              this.login(
-                this.state.surname,
-                this.state.othername,
-                this.state.title,
-                this.state.dateofbirth
-              )
-            }
-            onPress={this.toggleEditable}
+          {/* <TouchableOpacity
+          // onPress={() =>
+          //   this.login(
+          //     this.state.surname,
+          //     this.state.othername,
+          //     this.state.title,
+          //     this.state.dateofbirth
+          //   )
+          // }
           >
             <View style={styles.Textcontent}>
               <Text
@@ -197,13 +180,10 @@ onDateOfBirthChange(dateofbirth) {
               >
                 Submit
               </Text>
-              
             </View>
-          </TouchableOpacity>
-          
+          </TouchableOpacity> */}
         </View>
       </ScrollView>
- 
     );
   }
 }
@@ -211,7 +191,7 @@ onDateOfBirthChange(dateofbirth) {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    height:2800,
+    height: 650,
     width: 460,
     marginHorizontal: 1,
     backgroundColor: "#F5FCFF",

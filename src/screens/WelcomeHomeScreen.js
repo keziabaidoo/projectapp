@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   TextInput,
   Pressable,
+  Modal,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
@@ -22,6 +23,7 @@ import Popup from "./Popup";
 import Booking from "./Booking";
 import { connect } from "react-redux";
 import Animated from "react-native-reanimated";
+import ManagingBooking from "./ManageBooking";
 
 const popupList = [
   {
@@ -40,6 +42,7 @@ class WelcomeHomeScreen extends Component {
     super(props);
     this.state = {
       selectedlabel: "",
+      showMe:true,
     };
   }
 
@@ -279,6 +282,9 @@ class WelcomeHomeScreen extends Component {
           <View style={styles.bookingText}>
             <SafeAreaView>
               <View style={{}}>
+              {/* <Modal  style={styles.modalView}
+              visible={this.state.showMe}> */}
+
                 <TouchableOpacity>
                   <View
                     style={{
@@ -303,14 +309,23 @@ class WelcomeHomeScreen extends Component {
                     MY BOOKING
                   </Text>
                 </TouchableOpacity>
-              </View>
+                {/* </Modal> */}
+
+                </View>
+
+                {/* <Modal 
+                  visible={this.state.showMe}
+                onRequestClose={()=>console.warn("send a request")}>
+                 </Modal> */}
               {/* <Popup
                 title="Manage Booking"
                  ref={(target)=> popupRef = target}
                  onTouchOutside={onclosePopup}
                  data={popupList}
-              /> */}
-              {/* <Booking/> */}
+                 onTouchInside={onShowPopup}
+              />
+              <Booking/> */}
+              {/* <ManagingBooking/> */}
             </SafeAreaView>
             <TouchableOpacity
               onPress={() => {
@@ -328,6 +343,7 @@ class WelcomeHomeScreen extends Component {
               </View>
             </TouchableOpacity>
           </View>
+
         </ScrollView>
       </View>
     );
@@ -347,6 +363,11 @@ const styles = StyleSheet.create({
     paddingRight: 5,
     paddingBottom: 10,
     paddingLeft: 5,
+  },
+
+  modalView:{
+   height:100,
+   flex:1
   },
 
   TextOpacity: {
@@ -460,7 +481,7 @@ const styles = StyleSheet.create({
 
   signinText: {
     width: 150,
-    height: 40,
+    height: 60,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 6,
