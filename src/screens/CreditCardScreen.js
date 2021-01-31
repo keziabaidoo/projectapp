@@ -3,17 +3,17 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   Pressable,
   Alert,
   Image,
   Modal,
   Button,
-
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import { TextInput } from "react-native-paper";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 export default class CreditCardScreen extends Component {
   constructor(props) {
@@ -21,32 +21,31 @@ export default class CreditCardScreen extends Component {
     this.state = {};
   }
 
-  
-
   render() {
-    // showAlert =()=> {
-    //   Alert.alert(
-    //   'Title of alert','Tab OK',
-    //   [
-    //     {text:'OK', onPress:()=> console.log('OK pressed')},
-    //   ]
-    //   )
-    //  }
-    
     return (
       <View style={styles.container}>
-        <Text
+        <View style={styles.payText}>
+          <Text
+            style={{
+              paddingTop: 20,
+              // fontFamily: "Helvetica",
+              fontSize: 18,
+              padding: 20,
+              alignSelf: "center",
+            }}
+          >
+            Pay Invoice
+          </Text>
+        </View>
+        <View
           style={{
-            paddingTop: 20,
-            // fontFamily: "Helvetica",
-            fontSize: 18,
-            padding: 20,
-            alignSelf: "center",
+            height: 484,
+            width: 350,
+            backgroundColor: "#f2e9d5",
+            marginLeft: 5,
+            borderRadius: 3,
           }}
         >
-          Payment method
-        </Text>
-
         <View
           style={{
             // borderWidth: 1,
@@ -66,65 +65,54 @@ export default class CreditCardScreen extends Component {
             borderColor: "gray",
           }}
         >
-          <MaterialIcons
-            name="radio-button-unchecked"
-            size={20}
-            color="orange"
-            style={{ marginBottom: 5, marginRight: 5 }}
+          {/* <View style={styles.imageTag}> */}
+          <Image
+            style={styles.imageText}
+            source={require("../screens/visaCard.png")}
           />
-          <Text style={{ paddingTop: 3, }}>
-            Credit Card
-          </Text>
-          {/* <FontAwesome5
-            name="cc-visa"
-            size={20}
-            color="orange"
-            style={{ marginLeft: 200, paddingBottom: 10, borderRadius: 5 }}
-          /> */}
-        </View>
+          <Image
+            style={styles.imgText}
+            source={require("../screens/masterCard.png")}
+          />
 
-        <View
-          style={{
-            height: 425,
-            width: 320,
-            backgroundColor: "#f2e9d5",
-            marginLeft: 20,
-            borderRadius: 10,
-            margin: 5,
-          }}
-        >
-          <View style={{ flexDirection: "row" }}>
-            <MaterialIcons
-              name="radio-button-checked"
-              size={20}
-              color="orange"
-              style={{ marginBottom: 5, margin: 10 }}
-            />
-            <Text style={{ paddingTop: 13, marginLeft: 5 }}>Credit Card
-            {/* <Image source={require('')}/> */}
-            </Text>
-          </View>
+          <Image
+            style={styles.discoverText}
+            source={require("../screens/discover.png")}
+          />
+          {/* </View> */}
+        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+        <Text style={{ paddingTop: 20, fontSize:15, marginLeft:20 }}>Payment amount</Text>
+        <View style={styles.defaultText}> 
+        <TextInput defaultValue="$500.00"
+        style={styles.valueText}
+        />
+        <View style={styles.editText}>
+        <Text style={styles.editText2}>Edit</Text>
+        </View>
+        </View>
+      
           <View style={styles.cardText}>
-            <Text style={{ fontSize: 16, color: "gray",marginLeft:10 ,paddingTop:5}}>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "gray",
+                marginLeft: 10,
+                paddingTop: 5,
+              }}
+            >
               Name on Card
-              <Text style={{ lineHeight: 17, color: "red" }}>*</Text>
+              {/* <Text style={{ lineHeight: 17, color: "red" }}>*</Text> */}
             </Text>
             <TextInput
               style={{
                 height: 40,
                 width: 290,
-                // alignSelf: "center",
                 borderColor: "gray",
-                borderWidth: 1,
                 marginRight: 20,
                 color: "black",
                 fontSize: 18,
-                // fontFamily: "roboto",
-                shadowColor: "#000",
-                shadowOffset: { width: 1, height: 1 },
-                shadowOpacity: 0.8,
-                shadowRadius: 1,
-                borderRadius:5
+              
               }}
             />
           </View>
@@ -138,64 +126,73 @@ export default class CreditCardScreen extends Component {
                 marginLeft: 10,
                 lineHeight: 30,
                 color: "gray",
-                paddingTop:5
+                paddingTop: 5,
               }}
             >
-              
               Debit/Credit card number
-              <Text style={{ lineHeight: 17, color: "red" }}>*</Text>
             </Text>
             <TextInput
               style={{
                 color: "black",
                 fontSize: 18,
-                // fontFamily: "roboto",
                 height: 40,
                 width: 290,
-                borderWidth: 1,
                 borderColor: "gray",
-                shadowColor: "#000",
-                shadowOffset: { width: 1, height: 1 },
-                shadowOpacity: 0.8,
-                shadowRadius: 1,
-                borderRadius:5
+               
               }}
             />
           </View>
 
           <View style={styles.cardText}>
+            <View style={styles.dateText}>
             <Text
               style={{
-                // fontFamily: "Roman",
                 fontSize: 16,
-                // padding: 10,
                 marginLeft: 5,
                 lineHeight: 30,
                 color: "gray",
-                paddingTop:5
+                paddingTop: 5,
               }}
             >
-              Expiration Date
-              <Text style={{ lineHeight: 17, color: "red" }}>*</Text>
+              Expiry date
             </Text>
+            <Text
+              style={{
+                fontSize: 16,
+                marginLeft: 5,
+                lineHeight: 30,
+                color: "gray",
+                paddingTop: 5,
+              }}
+            >
+              Security code
+            </Text>
+            </View>
+            <View style={styles.infoText}>
             <TextInput
               style={{
-                //   color: "black",
                 fontSize: 15,
-                // fontFamily: "roboto",
                 height: 40,
-                width: 200,
-                borderWidth: 1,
+                width: 179,
                 borderColor: "gray",
-                shadowColor: "#000",
-                shadowOffset: { width: 1, height: 1 },
-                shadowOpacity: 0.8,
-                shadowRadius: 1,
-                borderRadius:5
+                
               }}
               defaultValue="Month"
             />
+               <TextInput
+              style={{
+                fontSize: 15,
+                height: 30,
+                width: 160,
+                borderColor: "gray",
+                borderLeftWidth:2,
+                borderRadius:3
+                
+              }}
+            />
+            </View>
           </View>
+       
           <View style={styles.cardText}>
             <Text
               style={{
@@ -205,34 +202,25 @@ export default class CreditCardScreen extends Component {
                 marginLeft: 5,
                 lineHeight: 30,
                 color: "gray",
-                paddingTop:5
+                paddingTop: 5,
               }}
             >
-              CVV Code
-              <Text style={{ lineHeight: 17, color: "red" }}>*</Text>
+            Zip/Postal code
             </Text>
             <TextInput
               style={{
                 color: "black",
                 borderRadius: 5,
                 fontSize: 18,
-                // fontFamily: "roboto",
                 height: 40,
-                width: 200,
-                borderWidth: 1,
+                width: 290,
                 borderColor: "gray",
-                shadowColor: "#000",
-                shadowOffset: { width: 1, height: 1 },
-                shadowOpacity: 0.8,
-                shadowRadius: 1,
-                // marginTop:5
+              
               }}
             />
           </View>
 
           <View>
-      
-          
             <Pressable
               style={({ pressed }) => [
                 {
@@ -240,11 +228,16 @@ export default class CreditCardScreen extends Component {
                 },
                 styles.button,
               ]}
-              onPress={() => Alert.alert('Payment Successfully!')}
-
+              onPress={() => Alert.alert("Payment Successfully!")}
             >
-              <Text style={styles.buttonText}>Submit
-              <AntDesign name="right" size={16} color="white" style={{paddingTop:5,marginLeft:10}}/>
+              <Text style={styles.buttonText}>
+                Submit
+                <AntDesign
+                  name="right"
+                  size={16}
+                  color="white"
+                  style={{ paddingTop: 5, marginLeft: 10 }}
+                />
               </Text>
             </Pressable>
 
@@ -252,8 +245,9 @@ export default class CreditCardScreen extends Component {
             title="show alert"
             onPress={showAlert}
             >Submit</Button> */}
-            
           </View>
+          </ScrollView>
+
         </View>
       </View>
     );
@@ -266,7 +260,7 @@ const styles = StyleSheet.create({
     // flex: 7,
     height: 550,
     width: 359,
-    backgroundColor:'#F5FCFF' ,
+    backgroundColor: "#F5FCFF",
     // margin: 5,
     // marginLeft: 10,
     // borderRadius: 10,
@@ -277,6 +271,11 @@ const styles = StyleSheet.create({
   },
   cardText: {
     margin: 10,
+  },
+  payText: {
+    borderBottomWidth: 1,
+    borderRadius: 5,
+    borderColor: "gray",
   },
 
   buttonText: {
@@ -296,6 +295,64 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
-    marginLeft: 100
+    marginLeft: 100,
   },
+
+  imageText: {
+    height: 40,
+    width: 70,
+    borderRadius: 5,
+    marginLeft: 20,
+  },
+  imgText: {
+    height: 40,
+    width: 70,
+    marginLeft: 10,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+
+  discoverText: {
+    height: 40,
+    width: 70,
+    marginLeft: 10,
+    borderRadius: 5,
+  },
+
+  imageTag: {},
+
+  defaultText:{
+  flexDirection:'row',
+  justifyContent:"space-around"
+  },
+
+  valueText:{
+    width:200,
+    height:40,
+    marginRight:40,
+    
+  },
+  editText:{
+    borderWidth:1,
+    height:40,
+    width:60,
+    borderRadius:5,
+    borderColor:"gray",
+    
+  },
+
+  editText2:{
+   paddingTop:10,
+   marginLeft:15,
+   fontSize:15
+  },
+  dateText:{
+    flexDirection:"row",
+    justifyContent:"space-between"
+  },
+  infoText:{
+    flexDirection:"row",
+    justifyContent:"space-between",
+    
+  }
 });

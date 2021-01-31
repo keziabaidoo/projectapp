@@ -7,6 +7,7 @@ import {
   Pressable,
   Alert,
   Button,
+  SafeAreaView,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from '@expo/vector-icons';
@@ -33,6 +34,7 @@ export default function MobilePaymentScreen({navigation}){
   
     // const { navigation } = this.props;
     return (
+      <SafeAreaView forceInset={{top:"always"}}>
       <View style={styles.container}>
         <Text
           style={{
@@ -145,6 +147,7 @@ export default function MobilePaymentScreen({navigation}){
           </View>
         </View>
       </View>
+      </SafeAreaView>
     );
   }
 
